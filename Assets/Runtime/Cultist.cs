@@ -10,9 +10,10 @@ public class Cultist : MonoBehaviour
         private set;
     }
 
-    public bool PerformingActivity
+    public Activity PerformingActivity
     {
-        
+        get;
+        private set;
     }
 
     public void Move(Vector2 direction)

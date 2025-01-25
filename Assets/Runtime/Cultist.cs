@@ -4,6 +4,7 @@ using UnityEngine;
 public class Cultist : MonoBehaviour
 {
     [SerializeField] CharacterController m_characterController;
+    [SerializeField] Animator m_animator;
 
     public bool IsSelected
     {
@@ -23,6 +24,8 @@ public class Cultist : MonoBehaviour
         get;
     }
 
+    bool isMovingThisFrame;
+
     void Start()
     {
         
@@ -34,6 +37,8 @@ public class Cultist : MonoBehaviour
             return;
         }
         m_characterController.Move(new Vector3(direction.x,0,direction.y));
+        isMovingThisFrame = true;
+        
     }
 
     public void StartActivity()
@@ -56,6 +61,8 @@ public class Cultist : MonoBehaviour
 
     public void PerformActivity()
     {
-        
+        m_animator.SetFloat("walking",isMovingThisFrame?1:0);        
+
+        isMovingThisFrame=false;
     }
 }

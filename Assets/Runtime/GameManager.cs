@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        m_activityManager.UpdateActivities();
         m_cultistManager.UpdateCultists();
-        
+        m_activityManager.UpdateActivities();
     }
 }

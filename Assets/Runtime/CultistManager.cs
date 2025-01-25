@@ -14,12 +14,17 @@ public class CultistManager : MonoBehaviour
 
     List<Cultist> cultists = new List<Cultist>();
 
+    int cultistsSpawned=0;
+
     void Start()
     {
         for (int i = 0; i < m_startCultistsNum; i++)
         {
             int index = i % m_startPositions.Length;
-            cultists.Add(Instantiate<Cultist>(m_cultistPrefab, m_startPositions[index].position, m_startPositions[index].rotation));
+            var cultist = Instantiate<Cultist>(m_cultistPrefab, m_startPositions[index].position, m_startPositions[index].rotation);
+            cultist.SetIndex(cultistsSpawned++);
+            cultists.Add(cultist);
+        
         }
     }
 

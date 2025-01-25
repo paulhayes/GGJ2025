@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b79dd0cb0117197499b18c2efcdb95bc, type: 3}
+  m_Name: Commandment Collection
+  m_EditorClassIdentifier: 
+  m_difficultyIndex: -5
+  m_samplePoolWidth: 10
+  m_commandments:
+  - {fileID: 11400000, guid: 1a44467327f5b4641be140fb675f6cc0, type: 2}
+  - {fileID: 11400000, guid: 5891cc4fd17ba5546aa0dcfb94c200dd, type: 2}
+  - {fileID: 11400000, guid: b0f8a3cdd6768844c9e50ac54b6893ac, type: 2}

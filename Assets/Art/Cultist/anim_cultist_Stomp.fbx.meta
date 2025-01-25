@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: e71f7e44b457a2741a378699f323463f
+guid: 10df07b09fd4d914d8b4b378a4212180
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: m_arms
-    second: {fileID: 2100000, guid: 0f6ef98948d380d4c906502e990c641c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: m_bubbleMask
-    second: {fileID: 2100000, guid: 6edbec102f8313046aa08fdff19c02d5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: m_face
-    second: {fileID: 2100000, guid: 2d92fb3b195a72d4491dcc035dd67d79, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: m_robe
-    second: {fileID: 2100000, guid: aaa80d279c79e8744b2356ff4e6dc73a, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -113,11 +93,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e71f7e44b457a2741a378699f323463f, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

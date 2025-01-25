@@ -19,6 +19,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: DiscoFrame
     second: {fileID: 2100000, guid: 1549041c2bfdb0c4493152739126bc22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 4765a94336a8d6f42b9a81e35b9db0fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 22a7379ccfcc51b499c756dd6bf282b2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

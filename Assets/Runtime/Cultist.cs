@@ -8,6 +8,10 @@ public class Cultist : MonoBehaviour
 
     [SerializeField] float walkingSpeed = 2f;
     [SerializeField] float exhaustedWalkingSpeed = 1.5f;
+
+    [SerializeField] MeshRenderer m_playerIndicator;
+
+    [SerializeField] Material[] m_playerIndicators;
     private CommandmentManager m_commandmentManager;
 
     public bool IsSelected
@@ -38,6 +42,8 @@ public class Cultist : MonoBehaviour
         {
             Debug.LogError("Cultist unable to find commandment manager in  the scene");
         }
+
+        DeselectCultist();
     }
 
     public void Move(Vector2 direction)
@@ -64,11 +70,14 @@ public class Cultist : MonoBehaviour
     public void SelectCultist(int playerIndex)
     {
         IsSelected = true;
+        m_playerIndicator.material = m_playerIndicators[playerIndex];
+        m_playerIndicator.gameObject.SetActive(true);
     }
 
     public void DeselectCultist()
     {
         IsSelected = false;
+        m_playerIndicator.gameObject.SetActive(false);
     }
 
     public void PerformActivity()

@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_characterController: {fileID: 5365288873656010410}
+  m_animator: {fileID: 1591925445832797854}
 --- !u!1001 &1488522798307472816
 PrefabInstance:
   m_ObjectHideFlags: 0

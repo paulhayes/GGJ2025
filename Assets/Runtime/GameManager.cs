@@ -3,6 +3,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] CultistManager cultistManager;
-    [SerializeField] ActivityManager activityManager;    
+    [SerializeField] CultistManager m_cultistManager;
+    [SerializeField] ActivityManager m_activityManager;    
 }

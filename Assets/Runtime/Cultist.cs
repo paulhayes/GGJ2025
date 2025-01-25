@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Cultist : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] CharacterController m_characterController;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

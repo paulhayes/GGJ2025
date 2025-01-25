@@ -16,34 +16,71 @@ public class CultistManager : MonoBehaviour
 
     void Start()
     {
-        for(int i=0;i<m_startCultistsNum;i++){
-            int index=i%m_startPositions.Length;
-            cultists.Add( Instantiate<Cultist>(m_cultistPrefab, m_startPositions[index].position,m_startPositions[index].rotation) );
+        for (int i = 0; i < m_startCultistsNum; i++)
+        {
+            int index = i % m_startPositions.Length;
+            cultists.Add(Instantiate<Cultist>(m_cultistPrefab, m_startPositions[index].position, m_startPositions[index].rotation));
         }
     }
 
     public void UpdateCultists()
     {
-        for(int i=0;i<m_startCultistsNum;i++){
+        for (int i = 0; i < m_startCultistsNum; i++)
+        {
             cultists[i].PerformActivity();
         }
     }
 
     public Cultist NextCultist(Cultist currentCultist)
     {
-        var index = 0;
-        
-        if(currentCultist!=null){
-            index = cultists.IndexOf(currentCultist);
+        var index = currentCultist != null ? cultists.IndexOf(currentCultist) : 0;
+        if (index == -1)
+        {
+            index = 0;
         }
-        if(index==-1){
-            
+
+        int count = 0;
+
+        while (count < cultists.Count)
+        {
+            index = (index + 1) % cultists.Count;
+            Cultist nextCultist = cultists[index];
+
+            if (!nextCultist.IsSelected && !nextCultist.IsDead)
+            {
+                return nextCultist;
+            }
+
+            count += 1;
         }
+
         return currentCultist;
     }
 
     public Cultist PreviousCultist(Cultist currentCultist)
     {
-        return null;
+        var index = currentCultist != null ? cultists.IndexOf(currentCultist) : 0;
+        if (index == -1)
+        {
+            index = 0;
+        }
+
+        int count = 0;
+
+        while (count < cultists.Count)
+        {
+            index = ((index - 1) % cultists.Count + cultists.Count) % cultists.Count;
+
+            Cultist nextCultist = cultists[index];
+
+            if (!nextCultist.IsSelected && !nextCultist.IsDead)
+            {
+                return nextCultist;
+            }
+
+            count += 1;
+        }
+
+        return currentCultist;
     }
 }

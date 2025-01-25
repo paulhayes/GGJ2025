@@ -65,8 +65,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Debug.Log("CULTIST " + _cultist.gameObject);
-
         if (Vector2.SqrMagnitude(_joystickAxis) > 0)
         {
             _cultist.Move(_joystickAxis.normalized * Time.deltaTime);

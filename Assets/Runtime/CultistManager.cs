@@ -4,13 +4,13 @@ public class CultistManager : MonoBehaviour
 {
     [SerializeField] Cultist m_cultistPrefab;
 
-    void Start()
+    public Cultist NextCultist()
     {
-        
+        return null;
     }
 
-    void Update()
+    public Cultist PreviousCultist()
     {
-        
+        return null;
     }
 }

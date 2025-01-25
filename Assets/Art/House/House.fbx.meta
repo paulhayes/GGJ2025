@@ -3,7 +3,22 @@ guid: a907db026e75845548ce94b2541e597d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: 79206ba7d2c774d469bfe450c06e0f50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DiscoBall
+    second: {fileID: 2100000, guid: b6cdf51ed7aa22b4391f66092aea36d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DiscoFrame
+    second: {fileID: 2100000, guid: 1549041c2bfdb0c4493152739126bc22, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

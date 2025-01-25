@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(PlayerInputManager))]
 public class GameInputManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject playerControllerPrefab;
+
     private PlayerInputManager _inputManager;
 
     const int MAX_PLAYERS = 4;
@@ -17,6 +23,10 @@ public class GameInputManager : MonoBehaviour
 
     void Start()
     {
+        if(playerControllerPrefab == null) {
+            Debug.LogError("No controller prefab on game input manager");
+        }
+
         _freePlayerIndices.Enqueue(0);
         _freePlayerIndices.Enqueue(1);
         _freePlayerIndices.Enqueue(2);
@@ -24,6 +34,7 @@ public class GameInputManager : MonoBehaviour
 
         _inputManager = GetComponent<PlayerInputManager>();
         _inputManager.joinBehavior = PlayerJoinBehavior.JoinPlayersManually;
+        _inputManager.playerPrefab = playerControllerPrefab;
         _inputManager.onPlayerJoined += OnPlayerJoined;
         _inputManager.onPlayerLeft += OnPlayerLeft;
     }

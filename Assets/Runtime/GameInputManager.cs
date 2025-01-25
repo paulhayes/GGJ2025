@@ -8,13 +8,14 @@ using UnityEngine.InputSystem;
 public class GameInputManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject playerControllerPrefab;
+    private GameObject PlayerControllerPrefab;
 
     private PlayerInputManager _inputManager;
+    private CultistManager _cultistManager;
 
     const int MAX_PLAYERS = 4;
 
-    public int CurrentPlayerCount {get; set;} = 0;
+    public int CurrentPlayerCount { get; set; } = 0;
 
     private Queue<int> _freePlayerIndices = new();
 
@@ -23,7 +24,8 @@ public class GameInputManager : MonoBehaviour
 
     void Start()
     {
-        if(playerControllerPrefab == null) {
+        if (!PlayerControllerPrefab)
+        {
             Debug.LogError("No controller prefab on game input manager");
         }
 
@@ -34,11 +36,16 @@ public class GameInputManager : MonoBehaviour
 
         _inputManager = GetComponent<PlayerInputManager>();
         _inputManager.joinBehavior = PlayerJoinBehavior.JoinPlayersManually;
-        _inputManager.playerPrefab = playerControllerPrefab;
+        _inputManager.playerPrefab = PlayerControllerPrefab;
         _inputManager.onPlayerJoined += OnPlayerJoined;
         _inputManager.onPlayerLeft += OnPlayerLeft;
-    }
 
+        _cultistManager = GetComponent<CultistManager>();
+        if (!_cultistManager)
+        {
+            Debug.LogError("No cultist manager found");
+        }
+    }
 
     void OnPlayerJoined(PlayerInput playerInput)
     {
@@ -47,8 +54,12 @@ public class GameInputManager : MonoBehaviour
 
     void OnPlayerLeft(PlayerInput playerInput)
     {
-        _playerIndexDeviceMap.Remove(playerInput.playerIndex);
-        _freePlayerIndices.Enqueue(playerInput.playerIndex);
+        var playerController = playerInput.GetComponent<PlayerController>();
+        if (playerController == null)
+        {
+            Debug.LogError("No Player Controller on input prefab");
+        }
+        playerController?.LeaveGame();
     }
 
     // Update is called once per frame
@@ -56,8 +67,6 @@ public class GameInputManager : MonoBehaviour
     {
 
         if (CurrentPlayerCount >= MAX_PLAYERS) return;
-
-
 
         foreach (var gamepad in Gamepad.all)
         {

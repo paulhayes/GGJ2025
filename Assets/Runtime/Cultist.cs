@@ -45,9 +45,10 @@ public class Cultist : MonoBehaviour
         {
             return;
         }
-        m_characterController.Move(new Vector3(direction.x,0,direction.y)* walkingSpeed);
+        var direction3D = new Vector3(direction.x,0,direction.y);
+        m_characterController.Move(direction3D* walkingSpeed);
         movingSpeed = Mathf.Clamp01(direction.magnitude);
-        
+        m_characterController.transform.forward = direction3D.normalized;
     }
 
     public void StartActivity()

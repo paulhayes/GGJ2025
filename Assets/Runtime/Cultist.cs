@@ -24,7 +24,8 @@ public class Cultist : MonoBehaviour
         get;
     }
 
-    bool isMovingThisFrame;
+    float movingSpeed;
+    [SerializeField] float exhaustionLevel;
 
     void Start()
     {
@@ -37,7 +38,7 @@ public class Cultist : MonoBehaviour
             return;
         }
         m_characterController.Move(new Vector3(direction.x,0,direction.y));
-        isMovingThisFrame = true;
+        movingSpeed = Mathf.Clamp01(direction.magnitude);
         
     }
 
@@ -61,8 +62,9 @@ public class Cultist : MonoBehaviour
 
     public void PerformActivity()
     {
-        m_animator.SetFloat("walking",isMovingThisFrame?1:0);        
-
-        isMovingThisFrame=false;
+        m_animator.SetFloat("walking",movingSpeed);        
+        m_animator.SetFloat("exhaustion",exhaustionLevel);
+        m_animator.SetInteger("activity",(int)PerformingActivity);
+        movingSpeed=0;
     }
 }

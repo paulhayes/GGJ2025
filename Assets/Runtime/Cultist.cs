@@ -23,14 +23,25 @@ public class Cultist : MonoBehaviour
         get;
     }
 
+    void Start()
+    {
+        
+    }
+
     public void Move(Vector2 direction)
     {
+        if(IsDead){
+            return;
+        }
         m_characterController.Move(new Vector3(direction.x,0,direction.y));
     }
 
     public void StartActivity()
     {
-        
+        if(IsDead){
+            return;
+        }
+
     }
 
     public void SelectCultist(int playerIndex)

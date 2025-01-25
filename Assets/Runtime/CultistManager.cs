@@ -6,7 +6,7 @@ public class CultistManager : MonoBehaviour
 {
     [SerializeField] Cultist m_cultistPrefab;
 
-    [SerializeField] Transform[] m_startPosition;
+    [SerializeField] Transform[] m_startPositions;
 
     [SerializeField] int m_startCultistsNum;
 
@@ -14,12 +14,11 @@ public class CultistManager : MonoBehaviour
 
     List<Cultist> cultists = new List<Cultist>();
 
-
-
     void Start()
     {
         for(int i=0;i<m_startCultistsNum;i++){
-            cultists.Add( Instantiate<Cultist>(m_cultistPrefab) );
+            int index=i%m_startPositions.Length;
+            cultists.Add( Instantiate<Cultist>(m_cultistPrefab, m_startPositions[index].position,m_startPositions[index].rotation) );
         }
     }
 

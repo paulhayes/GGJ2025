@@ -92,6 +92,6 @@ public class Cultist : MonoBehaviour
 
     public void SetIndex(int cultistIndex)
     {
-        m_masks[cultistIndex].SetActive(true);
+        m_masks[cultistIndex % m_masks.Length].SetActive(true);
     }
 }

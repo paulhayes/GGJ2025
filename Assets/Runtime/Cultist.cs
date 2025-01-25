@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Cultist : MonoBehaviour
@@ -14,6 +15,12 @@ public class Cultist : MonoBehaviour
     {
         get;
         private set;
+    }
+
+        public bool IsDead
+    {
+        private set;
+        get;
     }
 
     public void Move(Vector2 direction)
@@ -36,16 +43,8 @@ public class Cultist : MonoBehaviour
         IsSelected=false;
     }
 
-
-    void Start()
+    public void PerformActivity()
     {
         
     }
-
-    void Update()
-    {
-        
-    }
-
-
 }

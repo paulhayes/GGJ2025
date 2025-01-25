@@ -7,8 +7,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Bath
+    second: {fileID: 2100000, guid: 39ca53d547edef84ea0003bf7d22a69f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BathGold
+    second: {fileID: 2100000, guid: a876d08c56226d44a84ee4ce371c9ac9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Black
     second: {fileID: 2100000, guid: 79206ba7d2c774d469bfe450c06e0f50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Candle
+    second: {fileID: 2100000, guid: 30a96e15ad9b56d4fb784829932391f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CandleWick
+    second: {fileID: 2100000, guid: 5b3e123ab2037e34ca767b4e45a53cbf, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -19,6 +39,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: DiscoFrame
     second: {fileID: 2100000, guid: 1549041c2bfdb0c4493152739126bc22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Matress
+    second: {fileID: 2100000, guid: 4285f5a5eaf6eed4fbf3e1ed6d74eae8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

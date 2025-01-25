@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnNextCultist()
     {
-        Debug.Log("NEXT CULT");
         Cultist nextCultist = _cultistManager.NextCultist(_cultist);
         Debug.Log(nextCultist);
         if (nextCultist != _cultist && nextCultist && !nextCultist.IsDead)
@@ -65,11 +64,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Debug.Log("CULTIST " + _cultist.gameObject);
-
         if (Vector2.SqrMagnitude(_joystickAxis) > 0)
         {
-            _cultist.Move(_joystickAxis.normalized * Time.deltaTime);
+            _cultist.Move(_joystickAxis.normalized);
         }
     }
 }

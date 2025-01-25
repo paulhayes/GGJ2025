@@ -12,6 +12,8 @@ public class Cultist : MonoBehaviour
     [SerializeField] MeshRenderer m_playerIndicator;
 
     [SerializeField] Material[] m_playerIndicators;
+
+    [SerializeField] GameObject[] m_masks;
     private CommandmentManager m_commandmentManager;
 
     public bool IsSelected
@@ -86,5 +88,10 @@ public class Cultist : MonoBehaviour
         m_animator.SetFloat("exhaustion", exhaustionLevel);
         m_animator.SetInteger("activity", (int)PerformingActivity);
         movingSpeed = 0;
+    }
+
+    public void SetIndex(int cultistIndex)
+    {
+        m_masks[cultistIndex].SetActive(true);
     }
 }

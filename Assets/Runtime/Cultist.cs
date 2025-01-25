@@ -12,6 +12,8 @@ public class Cultist : MonoBehaviour
     [SerializeField] MeshRenderer m_playerIndicator;
 
     [SerializeField] Material[] m_playerIndicators;
+
+    [SerializeField] GameObject[] m_masks;
     private CommandmentManager m_commandmentManager;
 
     private Activity m_currentActivity = Activity.None;
@@ -125,5 +127,11 @@ public class Cultist : MonoBehaviour
             Debug.Log("PERFORM IT");
             PerformActivity();
         }
+    }
+
+    public void SetIndex(int cultistIndex)
+    {
+        m_masks[cultistIndex % m_masks.Length].SetActive(true);
+
     }
 }

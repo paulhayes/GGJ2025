@@ -2248,6 +2248,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6946337438186427213, guid: 1e5db53ec46ad9c468896d94a280d980, type: 3}
+      propertyPath: exhaustionLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8427985490528783684, guid: 1e5db53ec46ad9c468896d94a280d980, type: 3}
       propertyPath: m_Name
       value: Cultist

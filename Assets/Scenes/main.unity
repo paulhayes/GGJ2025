@@ -410,7 +410,7 @@ Transform:
   m_GameObject: {fileID: 384344642}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.13, y: 0, z: 1.62}
+  m_LocalPosition: {x: -9.6, y: 0, z: -1.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -441,7 +441,7 @@ Transform:
   m_GameObject: {fileID: 451138941}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.61, y: 0, z: -4.09}
+  m_LocalPosition: {x: 7.03, y: 0, z: 4.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1089,7 +1089,7 @@ Camera:
   far clip plane: 50
   field of view: 60
   orthographic: 1
-  orthographic size: 6.47
+  orthographic size: 10.9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1114,7 +1114,7 @@ Transform:
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 8.94, z: -9.54}
+  m_LocalPosition: {x: 0, y: 12.4, z: -9.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1145,7 +1145,7 @@ Transform:
   m_GameObject: {fileID: 1020174257}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.35, y: 0, z: 2.03}
+  m_LocalPosition: {x: 0.52, y: 0, z: -7.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1233,7 +1233,7 @@ Transform:
   m_GameObject: {fileID: 1116130797}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.81, y: 0, z: -2.12}
+  m_LocalPosition: {x: 6.93, y: 0, z: -5.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1352,7 +1352,7 @@ Transform:
   m_GameObject: {fileID: 1480476236}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.6, y: 0, z: -1.6}
+  m_LocalPosition: {x: 7.22, y: 0, z: -0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1383,7 +1383,7 @@ Transform:
   m_GameObject: {fileID: 1651899607}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.91, y: 0, z: 1.76}
+  m_LocalPosition: {x: -6.09, y: 0, z: 0.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1553,7 +1553,7 @@ Transform:
   m_GameObject: {fileID: 1813598802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.52, y: 0, z: -0.33}
+  m_LocalPosition: {x: -5.39, y: 0, z: 0.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2816,22 +2816,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
-    - target: {fileID: 1626603030352578459, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1650565418608077821, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951630735189334545, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4316612995820996623, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 5671964445374282391, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2871,26 +2855,6 @@ PrefabInstance:
     - target: {fileID: 5671964445374282391, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288202869756409760, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7935315261687447803, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8210135537068984291, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558814214315588716, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 9136247984211703617, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

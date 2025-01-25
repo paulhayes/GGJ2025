@@ -4,6 +4,12 @@ public class Cultist : MonoBehaviour
 {
     [SerializeField] CharacterController m_characterController;
 
+    public bool IsSelected
+    {
+        get;
+        private set;
+    }
+
     public void Move(Vector2 direction)
     {
 
@@ -11,7 +17,17 @@ public class Cultist : MonoBehaviour
 
     public void StartActivity()
     {
+        
+    }
 
+    public void SelectCultist(int playerIndex)
+    {
+        IsSelected=true;
+    }
+
+    public void DeselectCultist()
+    {
+        IsSelected=false;
     }
 
 

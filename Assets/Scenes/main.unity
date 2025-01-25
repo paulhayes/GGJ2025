@@ -286,6 +286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cultistPrefab: {fileID: 6946337438186427213, guid: 1e5db53ec46ad9c468896d94a280d980, type: 3}
+  m_startPosition: []
+  m_startCultistsNum: 8
+  m_maximumCultists: 12
 --- !u!114 &293389493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,8 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d2ef4d8f547364eb713af1ea7339a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_cultistManager: {fileID: 0}
-  m_activityManager: {fileID: 0}
+  m_cultistManager: {fileID: 293389492}
+  m_activityManager: {fileID: 293389491}
 --- !u!4 &293389494
 Transform:
   m_ObjectHideFlags: 0

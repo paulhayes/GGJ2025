@@ -7,6 +7,7 @@ public class Cultist : MonoBehaviour
     [SerializeField] Animator m_animator;
 
     [SerializeField] float walkingSpeed = 2f;
+    [SerializeField] float exhaustedWalkingSpeed = 1.5f;
     private CommandmentManager m_commandmentManager;
 
     public bool IsSelected
@@ -46,7 +47,7 @@ public class Cultist : MonoBehaviour
             return;
         }
         var direction3D = new Vector3(direction.x, 0, direction.y);
-        m_characterController.Move(direction3D * walkingSpeed * Time.deltaTime);
+        m_characterController.Move(direction3D * Mathf.Lerp(walkingSpeed,exhaustedWalkingSpeed,exhaustionLevel) * Time.deltaTime);
         movingSpeed = Mathf.Clamp01(direction.magnitude);
         m_characterController.transform.forward = direction3D.normalized;
     }

@@ -4,11 +4,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] CultistManager m_cultistManager;
-    [SerializeField] ActivityManager m_activityManager;    
+    [SerializeField] CommandmentManager m_commandmentManager;    
 
     void Update()
     {
         m_cultistManager.UpdateCultists();
-        m_activityManager.UpdateActivities();
+        m_commandmentManager.UpdateActivities();
     }
 }

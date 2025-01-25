@@ -273,6 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b818d4ae086b754da8981261905628d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CommandmentData:
+  - {fileID: 11400000, guid: b0f8a3cdd6768844c9e50ac54b6893ac, type: 2}
 --- !u!114 &293389492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cultistManager: {fileID: 293389492}
-  m_activityManager: {fileID: 293389491}
+  m_commandmentManager: {fileID: 293389491}
 --- !u!4 &293389494
 Transform:
   m_ObjectHideFlags: 0

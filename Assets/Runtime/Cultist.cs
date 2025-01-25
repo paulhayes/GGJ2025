@@ -6,6 +6,9 @@ public class Cultist : MonoBehaviour
     [SerializeField] CharacterController m_characterController;
     [SerializeField] Animator m_animator;
 
+    [SerializeField] float walkingSpeed = 2f;
+    private CommandmentManager m_commandmentManager;
+
     public bool IsSelected
     {
         get;
@@ -18,7 +21,7 @@ public class Cultist : MonoBehaviour
         private set;
     }
 
-        public bool IsDead
+    public bool IsDead
     {
         private set;
         get;
@@ -29,22 +32,28 @@ public class Cultist : MonoBehaviour
 
     void Start()
     {
-        
+        m_commandmentManager = GameObject.FindFirstObjectByType<CommandmentManager>();
+        if (!m_commandmentManager)
+        {
+            Debug.LogError("Cultist unable to find commandment manager in  the scene");
+        }
     }
 
     public void Move(Vector2 direction)
     {
-        if(IsDead){
+        if (IsDead)
+        {
             return;
         }
-        m_characterController.Move(new Vector3(direction.x,0,direction.y));
+        m_characterController.Move(new Vector3(direction.x,0,direction.y)* walkingSpeed);
         movingSpeed = Mathf.Clamp01(direction.magnitude);
         
     }
 
     public void StartActivity()
     {
-        if(IsDead){
+        if (IsDead)
+        {
             return;
         }
 
@@ -52,12 +61,12 @@ public class Cultist : MonoBehaviour
 
     public void SelectCultist(int playerIndex)
     {
-        IsSelected=true;
+        IsSelected = true;
     }
 
     public void DeselectCultist()
     {
-        IsSelected=false;
+        IsSelected = false;
     }
 
     public void PerformActivity()

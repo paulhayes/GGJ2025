@@ -70,8 +70,9 @@ public class GameInputManager : MonoBehaviour
 
         foreach (var gamepad in Gamepad.all)
         {
+
             if (gamepad.buttonSouth.isPressed)
-            {
+            {                
                 if (!_playerIndexDeviceMap.ContainsKey(gamepad.deviceId))
                 {
 

@@ -45,8 +45,8 @@ public class Cultist : MonoBehaviour
         {
             return;
         }
-        var direction3D = new Vector3(direction.x,0,direction.y);
-        m_characterController.Move(direction3D* walkingSpeed);
+        var direction3D = new Vector3(direction.x, 0, direction.y);
+        m_characterController.Move(direction3D * walkingSpeed * Time.deltaTime);
         movingSpeed = Mathf.Clamp01(direction.magnitude);
         m_characterController.transform.forward = direction3D.normalized;
     }
@@ -72,9 +72,9 @@ public class Cultist : MonoBehaviour
 
     public void PerformActivity()
     {
-        m_animator.SetFloat("walking",movingSpeed);        
-        m_animator.SetFloat("exhaustion",exhaustionLevel);
-        m_animator.SetInteger("activity",(int)PerformingActivity);
-        movingSpeed=0;
+        m_animator.SetFloat("walking", movingSpeed);
+        m_animator.SetFloat("exhaustion", exhaustionLevel);
+        m_animator.SetInteger("activity", (int)PerformingActivity);
+        movingSpeed = 0;
     }
 }

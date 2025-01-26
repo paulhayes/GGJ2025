@@ -29,12 +29,13 @@ public class CommandmentData
 
 public class CommandmentManager : MonoBehaviour
 {
-    [SerializeField]
-    public Commandment[] CommandmentData;
     const int MAX_COMMANDMENTS = 3;
     private List<CommandmentData> _commandments = new();
     public event Action OnNewCommandmentAdded;
-    public event Action OnCommandmentCompleted;
+    public event Action<int> OnCommandmentCompleted;
+
+    [SerializeField]
+    public CommandmentCollection CommandmentCollection;
 
 
 
@@ -42,22 +43,19 @@ public class CommandmentManager : MonoBehaviour
 
     void Awake()
     {
-        if (CommandmentData == null)
+        if (CommandmentCollection == null)
         {
-            Debug.LogError("No commandment data", this);
+            Debug.LogError("No commandment collection", this);
         }
-    }
+        CommandmentCollection.ResetDifficulty();
 
-    private Commandment GetNextCommandment()
-    {
-        return CommandmentData[0];
     }
 
     public void UpdateActivities()
     {
         if (_commandments.Count < MAX_COMMANDMENTS)
         {
-            _commandments.Insert(_commandments.Count, new CommandmentData(GetNextCommandment()));
+            _commandments.Insert(_commandments.Count, new CommandmentData(CommandmentCollection.GetRandomCommandment()));
             OnNewCommandmentAdded?.Invoke();
         }
     }
@@ -105,7 +103,7 @@ public class CommandmentManager : MonoBehaviour
                 {
                     _commandments.RemoveAt(i);
                     Debug.Log("Task Complete!");
-                    OnCommandmentCompleted?.Invoke();
+                    OnCommandmentCompleted?.Invoke(i);
 
                     continue;
                 }

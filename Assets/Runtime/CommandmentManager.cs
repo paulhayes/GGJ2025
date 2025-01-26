@@ -55,7 +55,7 @@ public class CommandmentManager : MonoBehaviour
     {
         if (_commandments.Count < MAX_COMMANDMENTS)
         {
-            _commandments.Insert(_commandments.Count, new CommandmentData(CommandmentCollection.GetRandomCommandment()));
+            _commandments.Add(new CommandmentData(CommandmentCollection.GetRandomCommandment()));
             OnNewCommandmentAdded?.Invoke();
         }
     }

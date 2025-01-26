@@ -15,9 +15,7 @@ public class Cultist : MonoBehaviour
 
     [SerializeField] GameObject[] m_masks;
     private CommandmentManager m_commandmentManager;
-
-    private Activity m_currentActivity = Activity.None;
-    private Collider[] m_collisions = new Collider[8];
+    private Collider[] m_collisions = new Collider[128];
 
     public bool IsSelected
     {
@@ -68,12 +66,24 @@ public class Cultist : MonoBehaviour
 
     public void StartActivity()
     {
-        if (IsDead || m_currentActivity == Activity.None)
+        if (IsDead)
         {
             return;
         }
 
-        PerformingActivity = m_currentActivity;
+        PerformingActivity = Activity.None;
+        // var colliders = Physics.OverlapBox(transform.position, new Vector3(0.1f, 0.1f, 0.1f));
+        int collisions = Physics.OverlapBoxNonAlloc(transform.position, new Vector3(0.1f, 0.1f, 0.1f), m_collisions, Quaternion.identity, LayerMask.GetMask("RoomTrigger"));
+        for(int i = 0; i < collisions; i += 1) {
+        
+            if (m_collisions[i].TryGetComponent<ActivityArea>(out ActivityArea area))
+            {
+                PerformingActivity = area.activity;
+                break;
+            }
+        }
+        
+
     }
 
     public void SelectCultist(int playerIndex)
@@ -96,36 +106,11 @@ public class Cultist : MonoBehaviour
         m_animator.SetInteger("activity", (int)PerformingActivity);
         movingSpeed = 0;
 
-        if (!IsSelected)
-        {
-            return;
+        if(PerformingActivity == Activity.None){
+            return;   
         }
 
-        bool foundArea = false;
-        // var colliders = Physics.OverlapBox(transform.position, new Vector3(0.1f, 0.1f, 0.1f));
-        int collisions = Physics.OverlapBoxNonAlloc(transform.position, new Vector3(0.1f, 0.1f, 0.1f), m_collisions, Quaternion.identity, LayerMask.GetMask("RoomTrigger"));
-        for(int i = 0; i < collisions; i += 1) {
-        
-            if (m_collisions[i].TryGetComponent<ActivityArea>(out ActivityArea area))
-            {
-                m_currentActivity = area.activity;
-                foundArea = true;
-                break;
-            }
-        }
-        if (!foundArea)
-        {
-            m_currentActivity = Activity.None;
-            PerformingActivity = Activity.None;
-        }
-
-
-        if (PerformingActivity != Activity.None)
-        {
-            PerformActivity();
-
-            m_commandmentManager.PerformActivityForFrame(PerformingActivity);
-        }
+        m_commandmentManager.PerformActivityForFrame(PerformingActivity);
     }
 
     public void SetIndex(int cultistIndex)

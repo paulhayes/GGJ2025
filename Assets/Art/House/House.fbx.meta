@@ -22,6 +22,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: CabinetPaint
+    second: {fileID: 2100000, guid: fea1e562e44e3c44ead30676d496d922, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Candle
     second: {fileID: 2100000, guid: 30a96e15ad9b56d4fb784829932391f0, type: 2}
   - first:
@@ -49,6 +54,26 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Metal
     second: {fileID: 2100000, guid: 4765a94336a8d6f42b9a81e35b9db0fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_1_Wallpaper
+    second: {fileID: 2100000, guid: 2a09b4b847f73d04e899a3073c2d7208, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_2_Wallpaper
+    second: {fileID: 2100000, guid: 859112a57750e5a449bab44364aad1a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_3_Wallpaper
+    second: {fileID: 2100000, guid: e68d216446dfe6a46a2816aebddc892f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_5_Wallpaper
+    second: {fileID: 2100000, guid: 7ee569df22c445d41b853612b853ba07, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

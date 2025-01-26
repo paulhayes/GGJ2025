@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [SerializeField] CommandmentsView m_commandmentView;
     void Update()
     {
         m_cultistManager.UpdateCultists();
@@ -36,6 +37,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
+        m_commandmentView.UpdateView();
     }
 }

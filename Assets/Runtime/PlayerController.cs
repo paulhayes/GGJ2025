@@ -19,11 +19,15 @@ public class PlayerController : MonoBehaviour
 
         _cultist = _cultistManager.NextCultist(null);
         _cultist?.SelectCultist(_playerInput.playerIndex);
+
+        GameObject.FindAnyObjectByType<GameData>().RegisterPlayer(this);
     }
 
     public void LeaveGame()
     {
         _cultist?.DeselectCultist();
+        GameObject.FindAnyObjectByType<GameData>().RegisterPlayer(this);
+
     }
 
     public void OnNextCultist()

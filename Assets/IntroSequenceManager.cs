@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 
 enum IntroState
 {
@@ -37,6 +38,8 @@ public class IntroSequenceManager : MonoBehaviour
     public bool IsComplete { get; private set; } = true;
 
     IntroState _introState = IntroState.CameraToPosition;
+
+    public UnityEvent OnIntroFinished;
 
     void Awake()
     {
@@ -132,5 +135,6 @@ public class IntroSequenceManager : MonoBehaviour
         IntroCamera.gameObject.SetActive(false);
         MainCamera.gameObject.SetActive(true);
         MainCamera.enabled = true;
+        OnIntroFinished?.Invoke();
     }
 }

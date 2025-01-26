@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608a8a6a2bb308b4aa87c80c8460a13f, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
+  BubbleHealth: 100

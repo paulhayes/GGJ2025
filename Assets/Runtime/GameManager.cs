@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         m_blackOutColor.a = ShowCamera ? 0.0f : 1.0f;
         BlackoutMesh.gameObject.SetActive(true);
         BlackoutMesh.material.color = m_blackOutColor;
+        m_gameData.BubbleHealth = 100.0f;
         ShowCamera = true;
 
     }

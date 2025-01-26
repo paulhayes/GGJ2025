@@ -95,26 +95,6 @@ public class Cultist : MonoBehaviour
         movingSpeed = 0;
     }
 
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.TryGetComponent<ActivityArea>(out ActivityArea area))
-        {
-            m_currentActivity = area.activity;
-        }
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.TryGetComponent<ActivityArea>(out ActivityArea area))
-        {
-            if (area.activity == m_currentActivity)
-            {
-                m_currentActivity = Activity.None;
-                PerformingActivity = Activity.None;
-            }
-        }
-    }
-
     void Update()
     {
         if (!IsSelected)
@@ -122,16 +102,34 @@ public class Cultist : MonoBehaviour
             return;
         }
 
+        var colliders = Physics.OverlapBox(transform.position, new Vector3(0.1f, 0.1f, 0.1f));
+        bool foundArea = false;
+        foreach (var collider in colliders)
+        {
+            if (collider.TryGetComponent<ActivityArea>(out ActivityArea area))
+            {
+                m_currentActivity = area.activity;
+                foundArea = true;
+                break;
+            }
+        }
+        if (!foundArea)
+        {
+            m_currentActivity = Activity.None;
+            PerformingActivity = Activity.None;
+        }
+
+
         if (PerformingActivity != Activity.None)
         {
-            Debug.Log("PERFORM IT");
             PerformActivity();
+
+            m_commandmentManager.PerformActivityForFrame(PerformingActivity);
         }
     }
 
     public void SetIndex(int cultistIndex)
     {
         m_masks[cultistIndex % m_masks.Length].SetActive(true);
-
     }
 }

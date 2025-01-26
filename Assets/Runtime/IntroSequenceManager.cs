@@ -119,7 +119,6 @@ public class IntroSequenceManager : MonoBehaviour
         }
         else if (_introState == IntroState.WaitForTitle)
         {
-            Debug.Log("END INTRO");
             m_titleCooldown -= Time.deltaTime;
             if (m_titleCooldown <= 0.0f)
             {

@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     private CultistManager _cultistManager;
     private Cultist _cultist = null;
+    [SerializeField] float m_deadzone = 0.1f;
+
 
     private void Start()
     {
@@ -64,9 +66,10 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (Vector2.SqrMagnitude(_joystickAxis) > 0)
+        if (Vector2.SqrMagnitude(_joystickAxis) > m_deadzone)
         {
-            _cultist.Move(_joystickAxis.normalized);
+            
+            _cultist.Move(_joystickAxis);
         }
     }
 }

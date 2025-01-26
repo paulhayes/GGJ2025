@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class CultistManager : MonoBehaviour
@@ -7,6 +7,7 @@ public class CultistManager : MonoBehaviour
     [SerializeField] Cultist m_cultistPrefab;
 
     [SerializeField] Transform[] m_startPositions;
+    [SerializeField] Transform m_newCultistSpawnPosition;
 
     [SerializeField] int m_startCultistsNum;
 
@@ -30,9 +31,12 @@ public class CultistManager : MonoBehaviour
 
     public void UpdateCultists()
     {
-        for (int i = 0; i < m_startCultistsNum; i++)
+        for (int i = 0; i < cultists.Count; i++)
         {
             cultists[i].PerformActivity();
+        }
+        for(int i=cultists.Count-1;i>=0;i--){
+            if(cultists[i].IsDead)cultists.RemoveAt(i);
         }
     }
 
@@ -88,4 +92,18 @@ public class CultistManager : MonoBehaviour
 
         return currentCultist;
     }
+
+    public bool SpawnNew()
+    {
+        if(cultists.Count>=m_maximumCultists){
+            return false;
+        }
+        var randomOffset = 2f*UnityEngine.Random.insideUnitCircle;
+        var randomOffset3d = new Vector3(randomOffset.x,0,randomOffset.y);
+        var cultist = Instantiate<Cultist>(m_cultistPrefab, m_newCultistSpawnPosition.position + (Vector3)(randomOffset3d), m_newCultistSpawnPosition.rotation);
+        cultist.SetIndex(cultistsSpawned++);
+        cultists.Add(cultist);
+        return true;
+    }
+
 }

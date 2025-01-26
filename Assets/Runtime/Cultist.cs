@@ -4,6 +4,8 @@ using UnityEngine;
 public class Cultist : MonoBehaviour
 {
     [SerializeField] CharacterController m_characterController;
+
+    
     [SerializeField] Animator m_animator;
 
     [SerializeField] float walkingSpeed = 2f;
@@ -17,7 +19,10 @@ public class Cultist : MonoBehaviour
 
     [SerializeField] float exhaustionRate = 1/30f;
     [SerializeField] float recoveryRate = 1/10f;
+
+    [SerializeField] GameObject m_wallMask;
     private CommandmentManager m_commandmentManager;
+    private RecruitmentController m_recruitmentController;
     private Collider[] m_collisions = new Collider[128];
 
     public bool IsSelected
@@ -41,6 +46,7 @@ public class Cultist : MonoBehaviour
     void Start()
     {
         m_commandmentManager = GameObject.FindFirstObjectByType<CommandmentManager>();
+        m_recruitmentController = GameObject.FindFirstObjectByType<RecruitmentController>();
         if (!m_commandmentManager)
         {
             Debug.LogError("Cultist unable to find commandment manager in  the scene");
@@ -90,35 +96,44 @@ public class Cultist : MonoBehaviour
         IsSelected = true;
         m_playerIndicator.material = m_playerIndicators[playerIndex];
         m_playerIndicator.gameObject.SetActive(true);
+        m_wallMask.SetActive(true);
     }
 
     public void DeselectCultist()
     {
         IsSelected = false;
         m_playerIndicator.gameObject.SetActive(false);
+        m_wallMask.SetActive(false);
     }
 
     public void PerformActivity()
     {
-        m_animator.SetFloat("walking", movingSpeed);
-        m_animator.SetFloat("exhaustion", exhaustionLevel);
-        m_animator.SetInteger("activity", (int)m_performingActivity);
-        movingSpeed = 0;
-
-        if(m_performingActivity == Activity.None){
-            return;   
-        }
+        
         if(m_performingActivity == Activity.Rest){
             exhaustionLevel = Mathf.MoveTowards( exhaustionLevel, 0, recoveryRate * Time.deltaTime);
         }
-        else {
+        else if(m_performingActivity != Activity.None){
             exhaustionLevel = Mathf.MoveTowards( exhaustionLevel, 1, exhaustionRate * Time.deltaTime);
         }
         if(exhaustionLevel==1f){
             m_performingActivity = Activity.Dead;            
         }
         
-        m_commandmentManager.PerformActivityForFrame(m_performingActivity);
+        m_animator.SetFloat("walking", movingSpeed);
+        m_animator.SetFloat("exhaustion", exhaustionLevel);
+        m_animator.SetInteger("activity", (int)m_performingActivity);
+        movingSpeed = 0;
+        
+        if(m_performingActivity == Activity.None){
+            return;   
+        }
+        
+        if(m_performingActivity==Activity.Recruiting){
+            m_recruitmentController.Perform();
+        }
+        else {
+            m_commandmentManager.PerformActivityForFrame(m_performingActivity);
+        }
     }
 
     public void SetIndex(int cultistIndex)

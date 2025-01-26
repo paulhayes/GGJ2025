@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
@@ -11,19 +12,12 @@ public class CommandmentsView : MonoBehaviour
 
     CommandmentManager m_commandmentManager;
     Queue<int> _nextCardIndex = new();
-    Dictionary<Activity, Texture> _activityIconMap = new();
-    Dictionary<int, int> _commandMentIdToSelectedIndexMap = new();
+
+    Dictionary<int, CommandmentView> _commandMentIdToCommandmentView = new();
 
     void Awake()
     {
-        _activityIconMap.Add(Activity.Rest, m_iconData.RestingIcon);
-        _activityIconMap.Add(Activity.BlowingBubbles, m_iconData.BlowingBubblesIcon);
-        _activityIconMap.Add(Activity.Dancing, m_iconData.DancingIcon);
-        _activityIconMap.Add(Activity.MakingBubbleTea, m_iconData.BubbleTeaIcon);
-        _activityIconMap.Add(Activity.MixingSoap, m_iconData.WashingUpIcon);
-        _activityIconMap.Add(Activity.Praying, m_iconData.PrayingIcon);
-        _activityIconMap.Add(Activity.Pumping, m_iconData.PumpingIcon);
-        _activityIconMap.Add(Activity.Recruiting, m_iconData.RecruitingIcon);
+
 
         _nextCardIndex.Enqueue(0);
         _nextCardIndex.Enqueue(1);
@@ -50,29 +44,34 @@ public class CommandmentsView : MonoBehaviour
 
     public void OnNewCommandmentAdded(CommandmentData data)
     {
-        // GameObject commandmentView = Instantiate(m_commandmentViewPrefab);
-        int nextIndex = _nextCardIndex.Dequeue();
-        m_commandmentCards[nextIndex].gameObject.SetActive(true);
-        _commandMentIdToSelectedIndexMap.Add(data.ID, nextIndex);
-
+        var commandmentCard = Instantiate(m_commandmentCards[data.activities.Length],m_commandmentCards[data.activities.Length].transform.parent);
+        commandmentCard.gameObject.SetActive(true);
+        _commandMentIdToCommandmentView.Add(data.ID, commandmentCard);
+        
         for (int i = 0; i < 4; i += 1)
         {
-            // data.activities[i];
-            if (i < data.activities.Length)
-            {
-                m_commandmentCards[nextIndex].SetIconActive(i, true);
-                m_commandmentCards[nextIndex].SetIcon(i, _activityIconMap[data.activities[i]]);
-            }
-            else
-            {
-                m_commandmentCards[nextIndex].SetIconActive(i, false);
-            }
+            commandmentCard.SetIconActive(i, i < data.activities.Length);            
         }
     }
 
     public void OnCommandmentCompleted(CommandmentData data)
     {
-        _nextCardIndex.Enqueue(_commandMentIdToSelectedIndexMap[data.ID]);
-        _commandMentIdToSelectedIndexMap.Remove(data.ID);
+        Destroy(_commandMentIdToCommandmentView[data.ID]);
+        _commandMentIdToCommandmentView.Remove(data.ID);
     }
+
+    public void UpdateView()
+    {
+        var commandments = m_commandmentManager.Commandments;
+        for(int i=0;i<commandments.Count;i++){
+            var commandment = commandments[i];
+            var view = _commandMentIdToCommandmentView[commandment.ID];
+            
+            for(int j=0;j<commandment.activities.Length;j++){
+                view.SetIcon(j,commandment.activities[j],commandment.activityInProgress[j]);
+
+            }
+        }
+    }
+
 }

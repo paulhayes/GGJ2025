@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 6926840376754040392}
   - component: {fileID: 2362083605820824258}
   m_Layer: 0
-  m_Name: Commandment
+  m_Name: CommandmentView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

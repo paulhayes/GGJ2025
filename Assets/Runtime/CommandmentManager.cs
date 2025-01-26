@@ -8,6 +8,7 @@ public class CommandmentData
     public float reward;
     public float time;
     public Activity[] activities;
+    public bool[] activityInProgress = new bool[4];
     public Dictionary<Activity, int> activityCountMap = new();
     public int ID;
 
@@ -17,6 +18,7 @@ public class CommandmentData
         reward = data.reward;
         time = data.time;
         activities = data.activities;
+        
         foreach (var activity in activities)
         {
             if (!activityCountMap.ContainsKey(activity))
@@ -29,6 +31,23 @@ public class CommandmentData
         ID = nextId;
 
         nextId++;
+    }
+
+    public void ClearInProgress()
+    {
+        for(int i=0;i<activities.Length;i++){
+            activityInProgress[i] = false;
+        }
+    }
+
+    public bool AllInProgress()
+    {
+        for(int i=0;i<activities.Length;i++){
+            if(!activityInProgress[i]){
+                return false;
+            }
+        }
+        return true;
     }
 }
 
@@ -45,6 +64,12 @@ public class CommandmentManager : MonoBehaviour
 
     private Dictionary<Activity, int> _performedActivityCounts = new();
 
+    public List<CommandmentData> Commandments {
+        get {
+            return _commandments;
+        }
+    }
+
     void Awake()
     {
         if (CommandmentCollection == null)
@@ -52,6 +77,12 @@ public class CommandmentManager : MonoBehaviour
             Debug.LogError("No commandment collection", this);
         }
         CommandmentCollection.ResetDifficulty();
+
+    }
+
+    public void PreUpdatte()
+    {
+        
 
     }
 
@@ -63,44 +94,14 @@ public class CommandmentManager : MonoBehaviour
             _commandments.Add(commandment);
             OnNewCommandmentAdded?.Invoke(commandment);
         }
-    }
 
-    public void PerformActivityForFrame(Activity activity)
-    {
-        if (!_performedActivityCounts.ContainsKey(activity))
-        {
-            _performedActivityCounts.Add(activity, 0);
-        }
-        _performedActivityCounts[activity] += 1;
-    }
-
-    bool HasCompletedCommand(CommandmentData commandment)
-    {
-        foreach (var (activity, count) in commandment.activityCountMap)
-        {
-            if (!_performedActivityCounts.ContainsKey(activity))
-            {
-                return false;
-            }
-            if (_performedActivityCounts[activity] < count)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void Update()
-    {
-        for (int i = 0; i < _commandments.Count;)
+        for (int i = _commandments.Count-1; i >=0 ;i--)
         {
             CommandmentData commandment = _commandments[i];
-            if (HasCompletedCommand(commandment))
+            
+            if (commandment.AllInProgress())
             {
-                foreach (var (activity, count) in commandment.activityCountMap)
-                {
-                    _performedActivityCounts[activity] -= count;
-                }
+                
 
                 commandment.time -= Time.deltaTime;
 
@@ -109,13 +110,43 @@ public class CommandmentManager : MonoBehaviour
                     OnCommandmentCompleted?.Invoke(commandment);
                     _commandments.RemoveAt(i);
                     Debug.Log("Task Complete!");
-
-                    continue;
                 }
             }
-            i += 1;
         }
 
-        _performedActivityCounts.Clear();
+    }
+
+    public void PerformActivityForFrame(Activity activity)
+    {
+        for(int i=0;i<_commandments.Count;i++){
+            var commandment = _commandments[i];
+            for(int j=0;j<commandment.activities.Length;j++){
+                commandment.activityInProgress[j]=true;
+                i=_commandments.Count;
+                break;
+            }
+        }
+    }
+
+    // bool ActivityConditionsMet(CommandmentData commandment)
+    // {
+    //     foreach (var (activity, count) in commandment.activityCountMap)
+    //     {
+    //         if (!_performedActivityCounts.ContainsKey(activity))
+    //         {
+    //             commandment.activityInProgress[]            
+    //             return false;
+    //         }
+    //         if (_performedActivityCounts[activity] < count)
+    //         {
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+
+    public void Update()
+    {
+        
     }
 }

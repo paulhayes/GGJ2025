@@ -47,7 +47,7 @@ public class CommandmentManager : MonoBehaviour
 
     public void UpdateActivities()
     {
-        if (_commandments.Count < MAX_COMMANDMENTS && m_nextCommandmentTime<Time.time)
+        if (_commandments.Count <= MAX_COMMANDMENTS && m_nextCommandmentTime<Time.time)
         {
             var commandment = new CommandmentData(CommandmentCollection.GetRandomCommandment());
             _commandments.Add(commandment);
@@ -66,6 +66,7 @@ public class CommandmentManager : MonoBehaviour
 
                 if (commandment.time <= 0)
                 {
+                    CommandmentCollection.IncreaseDifficulty();
                     OnCommandmentCompleted?.Invoke(commandment);
                     _commandments.RemoveAt(i);
                     Debug.Log("Task Complete!");

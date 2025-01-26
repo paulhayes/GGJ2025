@@ -269,6 +269,7 @@ MonoBehaviour:
   - {fileID: 8622175242604273819}
   - {fileID: 597810973620532106}
   - {fileID: 3844999878959246276}
+  - {fileID: 4387096115899912114}
   exhaustionRate: 0.033333335
   recoveryRate: 0.1
   m_wallMask: {fileID: 4807633233500566357}
@@ -429,6 +430,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6320147638509749758, guid: e71f7e44b457a2741a378699f323463f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4692251708648842362, guid: e71f7e44b457a2741a378699f323463f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -535,6 +540,11 @@ GameObject:
 --- !u!1 &3844999878959246276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2446691125523046004, guid: e71f7e44b457a2741a378699f323463f, type: 3}
+  m_PrefabInstance: {fileID: 1488522798307472816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4387096115899912114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6320147638509749758, guid: e71f7e44b457a2741a378699f323463f, type: 3}
   m_PrefabInstance: {fileID: 1488522798307472816}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6908024384495339805 stripped

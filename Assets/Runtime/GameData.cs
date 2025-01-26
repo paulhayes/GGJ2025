@@ -4,7 +4,9 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class GameData : ScriptableObject
 {
-    HashSet<UnityEngine.Object> m_players;
+    HashSet<UnityEngine.Object> m_players = new();
+
+    [SerializeField] public float BubbleHealth = 100.0f;
 
     public int NumPlayers()
     {

@@ -5,7 +5,7 @@ public class Cultist : MonoBehaviour
 {
     [SerializeField] CharacterController m_characterController;
 
-    
+
     [SerializeField] Animator m_animator;
 
     [SerializeField] float walkingSpeed = 2f;
@@ -17,8 +17,8 @@ public class Cultist : MonoBehaviour
 
     [SerializeField] GameObject[] m_masks;
 
-    [SerializeField] float exhaustionRate = 1/30f;
-    [SerializeField] float recoveryRate = 1/10f;
+    [SerializeField] float exhaustionRate = 1 / 30f;
+    [SerializeField] float recoveryRate = 1 / 10f;
 
     [SerializeField] GameObject m_wallMask;
     private CommandmentManager m_commandmentManager;
@@ -35,8 +35,9 @@ public class Cultist : MonoBehaviour
 
     public bool IsDead
     {
-        get {
-            return exhaustionLevel==1f;
+        get
+        {
+            return exhaustionLevel == 1f;
         }
     }
 
@@ -47,6 +48,7 @@ public class Cultist : MonoBehaviour
     {
         m_commandmentManager = GameObject.FindFirstObjectByType<CommandmentManager>();
         m_recruitmentController = GameObject.FindFirstObjectByType<RecruitmentController>();
+
         if (!m_commandmentManager)
         {
             Debug.LogError("Cultist unable to find commandment manager in  the scene");
@@ -79,15 +81,16 @@ public class Cultist : MonoBehaviour
         m_performingActivity = Activity.None;
         // var colliders = Physics.OverlapBox(transform.position, new Vector3(0.1f, 0.1f, 0.1f));
         int collisions = Physics.OverlapBoxNonAlloc(transform.position, new Vector3(0.1f, 0.1f, 0.1f), m_collisions, Quaternion.identity, LayerMask.GetMask("RoomTrigger"));
-        for(int i = 0; i < collisions; i += 1) {
-        
+        for (int i = 0; i < collisions; i += 1)
+        {
+
             if (m_collisions[i].TryGetComponent<ActivityArea>(out ActivityArea area))
             {
                 m_performingActivity = area.activity;
                 break;
             }
         }
-        
+
 
     }
 
@@ -108,30 +111,35 @@ public class Cultist : MonoBehaviour
 
     public void PerformActivity()
     {
-        
-        if(m_performingActivity == Activity.Rest){
-            exhaustionLevel = Mathf.MoveTowards( exhaustionLevel, 0, recoveryRate * Time.deltaTime);
+        if (m_performingActivity == Activity.Rest)
+        {
+            exhaustionLevel = Mathf.MoveTowards(exhaustionLevel, 0, recoveryRate * Time.deltaTime);
         }
-        else if(m_performingActivity != Activity.None){
-            exhaustionLevel = Mathf.MoveTowards( exhaustionLevel, 1, exhaustionRate * Time.deltaTime);
+        else if (m_performingActivity != Activity.None)
+        {
+            exhaustionLevel = Mathf.MoveTowards(exhaustionLevel, 1, exhaustionRate * Time.deltaTime);
         }
-        if(exhaustionLevel==1f){
-            m_performingActivity = Activity.Dead;            
+        if (exhaustionLevel == 1f)
+        {
+            m_performingActivity = Activity.Dead;
         }
-        
+
         m_animator.SetFloat("walking", movingSpeed);
         m_animator.SetFloat("exhaustion", exhaustionLevel);
         m_animator.SetInteger("activity", (int)m_performingActivity);
         movingSpeed = 0;
-        
-        if(m_performingActivity == Activity.None){
-            return;   
+
+        if (m_performingActivity == Activity.None)
+        {
+            return;
         }
-        
-        if(m_performingActivity==Activity.Recruiting){
+
+        if (m_performingActivity == Activity.Recruiting)
+        {
             m_recruitmentController.Perform();
         }
-        else {
+        else
+        {
             m_commandmentManager.PerformActivityForFrame(m_performingActivity);
         }
     }

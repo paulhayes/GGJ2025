@@ -82,7 +82,8 @@ public class GameManager : MonoBehaviour
 
             m_commandmentView.UpdateView();
 
-            m_gameData.BubbleHealth -= Time.deltaTime;
+
+            m_gameData.BubbleHealth -= Time.deltaTime * Mathf.Sqrt(m_gameData.NumPlayers());
             if (m_gameData.BubbleHealth <= 0.0f)
             {
                 m_isGameOver = true;

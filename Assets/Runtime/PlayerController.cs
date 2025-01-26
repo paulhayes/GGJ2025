@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Cultist _cultist = null;
     [SerializeField] float m_deadzone = 0.1f;
 
+    [SerializeField] GameData m_gameData;
+
 
     private void Start()
     {
@@ -20,13 +22,13 @@ public class PlayerController : MonoBehaviour
         _cultist = _cultistManager.NextCultist(null);
         _cultist?.SelectCultist(_playerInput.playerIndex);
 
-        GameObject.FindAnyObjectByType<GameData>().RegisterPlayer(this);
+        m_gameData.RegisterPlayer(this);
     }
 
     public void LeaveGame()
     {
         _cultist?.DeselectCultist();
-        GameObject.FindAnyObjectByType<GameData>().RegisterPlayer(this);
+        m_gameData.RegisterPlayer(this);
 
     }
 

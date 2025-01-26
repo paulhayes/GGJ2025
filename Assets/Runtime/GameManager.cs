@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] CommandmentsView m_commandmentView;
     void Update()
     {
+        m_commandmentManager.PreUpdate();        
         m_cultistManager.UpdateCultists();
         m_commandmentManager.UpdateActivities();
 

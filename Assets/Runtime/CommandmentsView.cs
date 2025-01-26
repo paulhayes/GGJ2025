@@ -11,7 +11,6 @@ public class CommandmentsView : MonoBehaviour
     [SerializeField] CommandmentView[] m_commandmentCards;
 
     CommandmentManager m_commandmentManager;
-    Queue<int> _nextCardIndex = new();
 
     Dictionary<int, CommandmentView> _commandMentIdToCommandmentView = new();
 
@@ -19,9 +18,6 @@ public class CommandmentsView : MonoBehaviour
     {
 
 
-        _nextCardIndex.Enqueue(0);
-        _nextCardIndex.Enqueue(1);
-        _nextCardIndex.Enqueue(2);
         m_commandmentManager = GameObject.FindFirstObjectByType<CommandmentManager>();
         if (!m_commandmentManager)
         {
@@ -69,7 +65,6 @@ public class CommandmentsView : MonoBehaviour
             
             for(int j=0;j<commandment.activities.Length;j++){
                 view.SetIcon(j,commandment.activities[j],commandment.activityInProgress[j]);
-
             }
         }
     }

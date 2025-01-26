@@ -3122,6 +3122,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
+    - target: {fileID: 3082491533858432700, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214800067346198974, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214800067346198974, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4b39e2e7e8fe53946998a3aaf45f193c, type: 2}
     - target: {fileID: 5671964445374282391, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3161,6 +3173,10 @@ PrefabInstance:
     - target: {fileID: 5671964445374282391, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579874471784539799, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -4,6 +4,8 @@ public class CommandmentData
 {
     public float reward;
     public float time;
+
+    public float duration;
     public Activity[] activities;
     public bool[] activityInProgress = new bool[4];
     public Dictionary<Activity, int> activityCountMap = new();
@@ -16,6 +18,7 @@ public class CommandmentData
     {
         reward = data.reward;
         time = data.time;
+        duration = time;
         activities = data.activities;
         
         foreach (var activity in activities)

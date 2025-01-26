@@ -5,6 +5,7 @@ public class CommandmentView : MonoBehaviour
 {
     [SerializeField] ActivityIconData m_inProgressActivityIcons;
     [SerializeField] ActivityIconData m_notInProgressActivityIcons;
+    [SerializeField] Image m_progressImage;
     [SerializeField] RawImage[] m_Icons;
 
     public void SetIcon(int index, Activity activity,bool inProgress)
@@ -21,6 +22,11 @@ public class CommandmentView : MonoBehaviour
             return;
         }
         m_Icons[index].gameObject.SetActive(isActive);
+    }
+
+    public void SetProgress(float progress)
+    {
+        m_progressImage.fillAmount = progress;
     }
 
 }

@@ -65,6 +65,7 @@ public class CommandmentsView : MonoBehaviour
             
             for(int j=0;j<commandment.activities.Length;j++){
                 view.SetIcon(j,commandment.activities[j],commandment.activityInProgress[j]);
+                view.SetProgress(1-(commandment.time/commandment.duration));
             }
         }
     }

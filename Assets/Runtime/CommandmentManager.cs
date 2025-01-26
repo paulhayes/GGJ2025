@@ -9,7 +9,9 @@ public class CommandmentData
     public float time;
     public Activity[] activities;
     public Dictionary<Activity, int> activityCountMap = new();
+    public int ID;
 
+    private static int nextId = 0;
     public CommandmentData(Commandment data)
     {
         reward = data.reward;
@@ -23,6 +25,10 @@ public class CommandmentData
             }
             activityCountMap[activity] += 1;
         }
+
+        ID = nextId;
+
+        nextId++;
     }
 }
 
@@ -31,13 +37,11 @@ public class CommandmentManager : MonoBehaviour
 {
     const int MAX_COMMANDMENTS = 3;
     private List<CommandmentData> _commandments = new();
-    public event Action OnNewCommandmentAdded;
-    public event Action<int> OnCommandmentCompleted;
+    public event Action<CommandmentData> OnNewCommandmentAdded;
+    public event Action<CommandmentData> OnCommandmentCompleted;
 
     [SerializeField]
     public CommandmentCollection CommandmentCollection;
-
-
 
     private Dictionary<Activity, int> _performedActivityCounts = new();
 
@@ -55,8 +59,9 @@ public class CommandmentManager : MonoBehaviour
     {
         if (_commandments.Count < MAX_COMMANDMENTS)
         {
-            _commandments.Add(new CommandmentData(CommandmentCollection.GetRandomCommandment()));
-            OnNewCommandmentAdded?.Invoke();
+            var commandment = new CommandmentData(CommandmentCollection.GetRandomCommandment());
+            _commandments.Add(commandment);
+            OnNewCommandmentAdded?.Invoke(commandment);
         }
     }
 
@@ -89,21 +94,21 @@ public class CommandmentManager : MonoBehaviour
     {
         for (int i = 0; i < _commandments.Count;)
         {
-            CommandmentData command = _commandments[i];
-            if (HasCompletedCommand(command))
+            CommandmentData commandment = _commandments[i];
+            if (HasCompletedCommand(commandment))
             {
-                foreach (var (activity, count) in command.activityCountMap)
+                foreach (var (activity, count) in commandment.activityCountMap)
                 {
                     _performedActivityCounts[activity] -= count;
                 }
 
-                command.time -= Time.deltaTime;
+                commandment.time -= Time.deltaTime;
 
-                if (command.time <= 0)
+                if (commandment.time <= 0)
                 {
+                    OnCommandmentCompleted?.Invoke(commandment);
                     _commandments.RemoveAt(i);
                     Debug.Log("Task Complete!");
-                    OnCommandmentCompleted?.Invoke(i);
 
                     continue;
                 }

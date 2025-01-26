@@ -163,7 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2211bd6c0b46f48ad927af19fd5ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icons:
+  m_inProgressActivityIcons: {fileID: 11400000, guid: 4df33339b0fb3174dbb3ef48cbf36e22, type: 2}
+  m_notInProgressActivityIcons: {fileID: 11400000, guid: 667158331bfc7dd4087f909584658074, type: 2}
+  m_Icons:
   - {fileID: 7144381532075714526}
   - {fileID: 1461101495699175987}
   - {fileID: 5914614113197299708}

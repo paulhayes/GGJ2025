@@ -3,54 +3,6 @@ using UnityEngine;
 using System;
 using UnityEngine.Animations;
 
-public class CommandmentData
-{
-    public float reward;
-    public float time;
-    public Activity[] activities;
-    public bool[] activityInProgress = new bool[4];
-    public Dictionary<Activity, int> activityCountMap = new();
-    public int ID;
-
-    private static int nextId = 0;
-    public CommandmentData(Commandment data)
-    {
-        reward = data.reward;
-        time = data.time;
-        activities = data.activities;
-        
-        foreach (var activity in activities)
-        {
-            if (!activityCountMap.ContainsKey(activity))
-            {
-                activityCountMap.Add(activity, 0);
-            }
-            activityCountMap[activity] += 1;
-        }
-
-        ID = nextId;
-
-        nextId++;
-    }
-
-    public void ClearInProgress()
-    {
-        for(int i=0;i<activities.Length;i++){
-            activityInProgress[i] = false;
-        }
-    }
-
-    public bool AllInProgress()
-    {
-        for(int i=0;i<activities.Length;i++){
-            if(!activityInProgress[i]){
-                return false;
-            }
-        }
-        return true;
-    }
-}
-
 
 public class CommandmentManager : MonoBehaviour
 {
@@ -69,6 +21,9 @@ public class CommandmentManager : MonoBehaviour
             return _commandments;
         }
     }
+
+    [SerializeField] float m_commandmentInterval = 3f;
+    float m_nextCommandmentTime = 0f;
 
     void Awake()
     {
@@ -92,7 +47,7 @@ public class CommandmentManager : MonoBehaviour
 
     public void UpdateActivities()
     {
-        if (_commandments.Count < MAX_COMMANDMENTS)
+        if (_commandments.Count < MAX_COMMANDMENTS && m_nextCommandmentTime<Time.time)
         {
             var commandment = new CommandmentData(CommandmentCollection.GetRandomCommandment());
             _commandments.Add(commandment);
@@ -114,6 +69,7 @@ public class CommandmentManager : MonoBehaviour
                     OnCommandmentCompleted?.Invoke(commandment);
                     _commandments.RemoveAt(i);
                     Debug.Log("Task Complete!");
+                    m_nextCommandmentTime = Time.time + m_commandmentInterval;
                 }
             }
         }

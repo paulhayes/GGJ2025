@@ -575,6 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d2ef4d8f547364eb713af1ea7339a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_gameData: {fileID: 11400000, guid: b29c190cbd64bf54c84b02a8132e2bc4, type: 2}
   m_cultistManager: {fileID: 293389492}
   m_commandmentManager: {fileID: 293389491}
   BlackoutMesh: {fileID: 56902498}
@@ -5036,6 +5037,26 @@ PrefabInstance:
     - target: {fileID: 809183505351286437, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
       propertyPath: m_Name
       value: House
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710446357394931647, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.010000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710446357394931647, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
+      propertyPath: m_Size.z
+      value: 0.023141868
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710446357394931647, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
+      propertyPath: m_Center.x
+      value: -0.005544814
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710446357394931647, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
+      propertyPath: m_Center.y
+      value: 0.00434144
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710446357394931647, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
+      propertyPath: m_Center.z
+      value: 0.006570689
       objectReference: {fileID: 0}
     - target: {fileID: 4558284128352067705, guid: f3ab4622271186244b1d5cfbf85b683e, type: 3}
       propertyPath: m_ConstrainProportionsScale

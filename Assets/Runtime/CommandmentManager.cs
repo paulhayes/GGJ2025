@@ -66,6 +66,7 @@ public class CommandmentManager : MonoBehaviour
 
                 if (commandment.time <= 0)
                 {
+                    CommandmentCollection.IncreaseDifficulty();
                     OnCommandmentCompleted?.Invoke(commandment);
                     _commandments.RemoveAt(i);
                     Debug.Log("Task Complete!");

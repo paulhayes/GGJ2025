@@ -31,13 +31,8 @@ public class IntroSequenceManager : MonoBehaviour
 
     CultistManager m_cultistManager;
 
-    private Vector3 m_cameraOffset = new Vector3(0.0f, 0.0f, -0.51f);
-    private float m_cameraYStart = 1.13f;
+    private float m_titleCooldown = 2.5f;
 
-    private bool m_showTitle = false;
-    private float m_titleCooldown = 5.0f;
-
-    private Vector3 m_lookPosition;
 
     public bool IsComplete { get; private set; } = true;
 
@@ -78,7 +73,7 @@ public class IntroSequenceManager : MonoBehaviour
         if (IsComplete) return;
 
         const float CAMERA_SPEED = 0.3f;
-        const float FADE_IN_SPEED = 0.25f;
+        const float FADE_IN_SPEED = 0.5f;
         const float FADE_OUT_SPEED = 0.5f;
 
         if (_introState == IntroState.CameraToPosition)
@@ -125,12 +120,17 @@ public class IntroSequenceManager : MonoBehaviour
             m_titleCooldown -= Time.deltaTime;
             if (m_titleCooldown <= 0.0f)
             {
-                IsComplete = true;
-                GameUI.SetActive(true);
-                IntroCamera.gameObject.SetActive(false);
-                MainCamera.gameObject.SetActive(true);
-                MainCamera.enabled = true;
+                EndIntro();
             }
         }
+    }
+
+    public void EndIntro()
+    {
+        IsComplete = true;
+        GameUI.SetActive(true);
+        IntroCamera.gameObject.SetActive(false);
+        MainCamera.gameObject.SetActive(true);
+        MainCamera.enabled = true;
     }
 }

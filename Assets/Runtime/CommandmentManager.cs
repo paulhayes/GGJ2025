@@ -47,7 +47,7 @@ public class CommandmentManager : MonoBehaviour
 
     public void UpdateActivities()
     {
-        if (_commandments.Count < MAX_COMMANDMENTS && m_nextCommandmentTime<Time.time)
+        if (_commandments.Count <= MAX_COMMANDMENTS && m_nextCommandmentTime<Time.time)
         {
             var commandment = new CommandmentData(CommandmentCollection.GetRandomCommandment());
             _commandments.Add(commandment);

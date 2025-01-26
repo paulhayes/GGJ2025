@@ -25,9 +25,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] CommandmentsView m_commandmentView;
     void Update()
     {
-        m_cultistManager.UpdateCultists();
-        m_commandmentManager.UpdateActivities();
-
         if (PlayIntroSequence && !m_introSequenceManager.IsComplete)
         {
             m_introSequenceManager.UpdateIntroSequence();
@@ -36,7 +33,13 @@ public class GameManager : MonoBehaviour
                 PlayIntroSequence = false;
             }
         }
+        else
+        {
+            m_cultistManager.UpdateCultists();
+            m_commandmentManager.UpdateActivities();
 
-        m_commandmentView.UpdateView();
+            m_commandmentView.UpdateView();
+        }
+
     }
 }

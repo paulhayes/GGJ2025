@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameData m_gameData;
     [SerializeField] CultistManager m_cultistManager;
     [SerializeField] CommandmentManager m_commandmentManager;
     [SerializeField] MeshRenderer BlackoutMesh;
@@ -12,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public bool PlayIntroSequence;
 
-    float m_bubbleHealth = 100.0f;
     float m_timeAlive = 0.0f;
     bool m_isGameOver = false;
     public bool ShowCamera { get; set; } = true;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     void OnCommandmentCompleted(CommandmentData data)
     {
-        m_bubbleHealth += data.reward;
+        m_gameData.BubbleHealth += data.reward;
     }
 
     [SerializeField] CommandmentsView m_commandmentView;
@@ -79,8 +79,8 @@ public class GameManager : MonoBehaviour
 
             m_commandmentView.UpdateView();
 
-            m_bubbleHealth -= Time.deltaTime;
-            if (m_bubbleHealth <= 0.0f)
+            m_gameData.BubbleHealth -= Time.deltaTime;
+            if (m_gameData.BubbleHealth <= 0.0f)
             {
                 m_isGameOver = true;
                 ShowCamera = false;

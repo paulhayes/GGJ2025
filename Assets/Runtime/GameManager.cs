@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            m_commandmentManager.PreUpdate();
             m_cultistManager.UpdateCultists();
             m_commandmentManager.UpdateActivities();
 

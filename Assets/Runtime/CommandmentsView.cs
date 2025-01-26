@@ -52,7 +52,7 @@ public class CommandmentsView : MonoBehaviour
 
     public void OnCommandmentCompleted(CommandmentData data)
     {
-        Destroy(_commandMentIdToCommandmentView[data.ID]);
+        Destroy(_commandMentIdToCommandmentView[data.ID].gameObject);
         _commandMentIdToCommandmentView.Remove(data.ID);
     }
 

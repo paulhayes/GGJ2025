@@ -9,6 +9,9 @@ public class CommandmentView : MonoBehaviour
 
     public void SetIcon(int index, Activity activity,bool inProgress)
     {
+        if(index>=m_Icons.Length){
+            return;
+        }
         m_Icons[index].texture = (inProgress?m_inProgressActivityIcons:m_notInProgressActivityIcons).GetIcon(activity);
     }
 

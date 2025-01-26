@@ -42,8 +42,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: DiscoFloor
+    second: {fileID: 2100000, guid: 37fdb8c833215466f93e3dea90b8ad8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: DiscoFrame
     second: {fileID: 2100000, guid: 1549041c2bfdb0c4493152739126bc22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Disco_Wallpaper
+    second: {fileID: 2100000, guid: aca109c54433942128879da72fe08e57, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor Tile 1
+    second: {fileID: 2100000, guid: 4491fd01389594e3bbe28d247e6ecfc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor Tile 10
+    second: {fileID: 2100000, guid: eb4bb5b74fb444f7ca3db85e273ce8a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor Tile 3
+    second: {fileID: 2100000, guid: 193c2d1b8e7b44304b4999e2da8a0dc3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -59,6 +84,21 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Metal
     second: {fileID: 2100000, guid: 4765a94336a8d6f42b9a81e35b9db0fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PinkWallpaper
+    second: {fileID: 2100000, guid: 1e99e9e6e6ca94f01b103d3451a77b27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RecruitRoom Wallpaper
+    second: {fileID: 2100000, guid: 6bd78d3a7b9e944ae8703d4568983fba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ShrineRoom Wallpaper
+    second: {fileID: 2100000, guid: c57028113e8034f32aee839771d4b1d5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

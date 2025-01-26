@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db6a776af06c02419e4c60685d74e75, type: 3}
+  m_Name: NotInProgressActivityIconData
+  m_EditorClassIdentifier: 
+  BlowingBubblesIcon: {fileID: 2800000, guid: 9b496e19506cb3442a7ffb49faf8c480, type: 3}
+  DancingIcon: {fileID: 2800000, guid: 7d6b9e8ec4c8c03439543552bd396c08, type: 3}
+  BubbleTeaIcon: {fileID: 2800000, guid: 74aa8c71deb559a49a906df4d08c586f, type: 3}
+  WashingUpIcon: {fileID: 2800000, guid: e1d3ad5a05cafde4eb9829a834003a5e, type: 3}
+  PrayingIcon: {fileID: 2800000, guid: 9745d94bb8757594d892bd137c71cd86, type: 3}
+  PumpingIcon: {fileID: 2800000, guid: eb8487e58b6ad24419ffc30323cd168e, type: 3}
+  RecruitingIcon: {fileID: 2800000, guid: 47339041bf55cdb46b73a3150393e7cc, type: 3}
+  RestingIcon: {fileID: 2800000, guid: 6e425f8b52946e348841f41de752242d, type: 3}

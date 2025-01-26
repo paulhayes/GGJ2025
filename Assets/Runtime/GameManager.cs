@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public bool PlayIntroSequence;
 
-    float m_bubbleHealth = 10.0f;
+    float m_bubbleHealth = 100.0f;
     float m_timeAlive = 0.0f;
     bool m_isGameOver = false;
     public bool ShowCamera { get; set; } = true;

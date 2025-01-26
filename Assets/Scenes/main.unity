@@ -577,7 +577,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cultistManager: {fileID: 293389492}
   m_commandmentManager: {fileID: 293389491}
-  PlayIntroSequence: 0
+  BlackoutMesh: {fileID: 56902498}
+  PlayIntroSequence: 1
   m_commandmentView: {fileID: 739556553}
 --- !u!4 &293389494
 Transform:

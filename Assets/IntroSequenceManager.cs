@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class IntroSequenceManager : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class IntroSequenceManager : MonoBehaviour
     [SerializeField] public GameObject GameUI;
     [SerializeField] public GameObject MapMarkers;
 
+    [SerializeField] public AudioClip IntroAudioClip;
+
     CultistManager m_cultistManager;
-    Cultist m_cultist;
 
     private Vector3 m_cameraOffset = new Vector3(0.0f, 0.0f, -0.51f);
     private float m_cameraYStart = 1.13f;
@@ -31,24 +33,15 @@ public class IntroSequenceManager : MonoBehaviour
     {
         IsComplete = false;
         IntroCamera.gameObject.SetActive(true);
+        MainCamera.enabled = false;
 
         GameUI.SetActive(false);
         MapMarkers.SetActive(false);
 
 
-        m_cultist = m_cultistManager.NextCultist(null);
-        // cultist.setAc
-        m_cultist.PerformActivity();
-
-        Vector3 position = m_cultist.transform.position;
-        position += m_cameraOffset;
-        position.y = m_cameraYStart;
-
-        IntroCamera.transform.position = position;
-        m_lookPosition = m_cultist.transform.position;
-        m_lookPosition.y = m_cameraYStart;
-
         IntroCamera.transform.position = CameraStartPosition.position;
+
+        AudioSource.PlayClipAtPoint(IntroAudioClip, MainCamera.transform.position);
     }
 
     public void UpdateIntroSequence()
@@ -58,16 +51,17 @@ public class IntroSequenceManager : MonoBehaviour
         IntroCamera.transform.position = Vector3.MoveTowards(
             IntroCamera.transform.position,
             CameraEndPosition.position,
-            Time.deltaTime * 0.5f
+            Time.deltaTime * 0.3f
         );
         if (IntroCamera.transform.position == CameraEndPosition.position)
         {
-            IsComplete = true;
+            // Fade out Show logo
 
+            IsComplete = true;
             GameUI.SetActive(true);
             IntroCamera.gameObject.SetActive(false);
             MainCamera.gameObject.SetActive(true);
-
+            MainCamera.enabled = true;
             Debug.Log("END INTRO");
         }
     }

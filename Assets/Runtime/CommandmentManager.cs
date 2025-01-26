@@ -80,9 +80,13 @@ public class CommandmentManager : MonoBehaviour
 
     }
 
-    public void PreUpdatte()
+    public void PreUpdate()
     {
-        
+        //Debug.Log("PreUpdatte");
+        for(int i=0;i<_commandments.Count;i++){
+            var commandment = _commandments[i];
+            commandment.ClearInProgress();
+        }
 
     }
 
@@ -118,12 +122,15 @@ public class CommandmentManager : MonoBehaviour
 
     public void PerformActivityForFrame(Activity activity)
     {
+        //Debug.Log($"Performing {activity}");
         for(int i=0;i<_commandments.Count;i++){
             var commandment = _commandments[i];
             for(int j=0;j<commandment.activities.Length;j++){
-                commandment.activityInProgress[j]=true;
-                i=_commandments.Count;
-                break;
+                if(activity==commandment.activities[j] && !commandment.activityInProgress[j]){
+                    commandment.activityInProgress[j]=true;
+                    i=_commandments.Count;
+                    break;
+                }
             }
         }
     }

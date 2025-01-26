@@ -47,6 +47,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Green
+    second: {fileID: 2100000, guid: 647504ffdea72494b95acbe6ff6bbbc7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Matress
     second: {fileID: 2100000, guid: 4285f5a5eaf6eed4fbf3e1ed6d74eae8, type: 2}
   - first:

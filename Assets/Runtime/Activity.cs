@@ -9,5 +9,7 @@ public enum Activity
     MixingSoap = 6,
     MakingBubbleTea = 7,
 
-    Dancing = 8
+    Dancing = 8,
+
+    Dead = 9
 }

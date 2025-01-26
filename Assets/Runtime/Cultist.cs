@@ -32,8 +32,9 @@ public class Cultist : MonoBehaviour
 
     public bool IsDead
     {
-        private set;
-        get;
+        get {
+            return exhaustionLevel==1f;
+        }
     }
 
     float movingSpeed;

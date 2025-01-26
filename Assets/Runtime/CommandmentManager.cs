@@ -11,7 +11,7 @@ public class CommandmentData
     public Dictionary<Activity, int> activityCountMap = new();
     public int ID;
 
-    private static int nextId = 0; 
+    private static int nextId = 0;
     public CommandmentData(Commandment data)
     {
         reward = data.reward;
@@ -60,7 +60,7 @@ public class CommandmentManager : MonoBehaviour
         if (_commandments.Count < MAX_COMMANDMENTS)
         {
             var commandment = new CommandmentData(CommandmentCollection.GetRandomCommandment());
-            _commandments.Insert(_commandments.Count, commandment);
+            _commandments.Add(commandment);
             OnNewCommandmentAdded?.Invoke(commandment);
         }
     }

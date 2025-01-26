@@ -14,10 +14,11 @@ public class Cultist : MonoBehaviour
     [SerializeField] Material[] m_playerIndicators;
 
     [SerializeField] GameObject[] m_masks;
-    private CommandmentManager m_commandmentManager;
 
-    private Activity m_currentActivity = Activity.None;
-    private Collider[] m_collisions = new Collider[8];
+    [SerializeField] float exhaustionRate = 1/30f;
+    [SerializeField] float recoveryRate = 1/10f;
+    private CommandmentManager m_commandmentManager;
+    private Collider[] m_collisions = new Collider[128];
 
     public bool IsSelected
     {
@@ -25,16 +26,13 @@ public class Cultist : MonoBehaviour
         private set;
     }
 
-    public Activity PerformingActivity
-    {
-        get;
-        private set;
-    }
+    [SerializeField] Activity m_performingActivity;
 
     public bool IsDead
     {
-        private set;
-        get;
+        get {
+            return exhaustionLevel==1f;
+        }
     }
 
     float movingSpeed;
@@ -62,17 +60,29 @@ public class Cultist : MonoBehaviour
         movingSpeed = Mathf.Clamp01(direction.magnitude);
         m_characterController.transform.forward = direction3D.normalized;
 
-        PerformingActivity = Activity.None;
+        m_performingActivity = Activity.None;
     }
 
     public void StartActivity()
     {
-        if (IsDead || m_currentActivity == Activity.None)
+        if (IsDead)
         {
             return;
         }
 
-        PerformingActivity = m_currentActivity;
+        m_performingActivity = Activity.None;
+        // var colliders = Physics.OverlapBox(transform.position, new Vector3(0.1f, 0.1f, 0.1f));
+        int collisions = Physics.OverlapBoxNonAlloc(transform.position, new Vector3(0.1f, 0.1f, 0.1f), m_collisions, Quaternion.identity, LayerMask.GetMask("RoomTrigger"));
+        for(int i = 0; i < collisions; i += 1) {
+        
+            if (m_collisions[i].TryGetComponent<ActivityArea>(out ActivityArea area))
+            {
+                m_performingActivity = area.activity;
+                break;
+            }
+        }
+        
+
     }
 
     public void SelectCultist(int playerIndex)
@@ -92,39 +102,23 @@ public class Cultist : MonoBehaviour
     {
         m_animator.SetFloat("walking", movingSpeed);
         m_animator.SetFloat("exhaustion", exhaustionLevel);
-        m_animator.SetInteger("activity", (int)PerformingActivity);
+        m_animator.SetInteger("activity", (int)m_performingActivity);
         movingSpeed = 0;
 
-        if (!IsSelected)
-        {
-            return;
+        if(m_performingActivity == Activity.None){
+            return;   
         }
-
-        bool foundArea = false;
-        // var colliders = Physics.OverlapBox(transform.position, new Vector3(0.1f, 0.1f, 0.1f));
-        int collisions = Physics.OverlapBoxNonAlloc(transform.position, new Vector3(0.1f, 0.1f, 0.1f), m_collisions, Quaternion.identity, LayerMask.GetMask("RoomTrigger"));
-        for(int i = 0; i < collisions; i += 1) {
+        if(m_performingActivity == Activity.Rest){
+            exhaustionLevel = Mathf.MoveTowards( exhaustionLevel, 0, recoveryRate * Time.deltaTime);
+        }
+        else {
+            exhaustionLevel = Mathf.MoveTowards( exhaustionLevel, 1, exhaustionRate * Time.deltaTime);
+        }
+        if(exhaustionLevel==1f){
+            m_performingActivity = Activity.Dead;            
+        }
         
-            if (m_collisions[i].TryGetComponent<ActivityArea>(out ActivityArea area))
-            {
-                m_currentActivity = area.activity;
-                foundArea = true;
-                break;
-            }
-        }
-        if (!foundArea)
-        {
-            m_currentActivity = Activity.None;
-            PerformingActivity = Activity.None;
-        }
-
-
-        if (PerformingActivity != Activity.None)
-        {
-            PerformActivity();
-
-            m_commandmentManager.PerformActivityForFrame(PerformingActivity);
-        }
+        m_commandmentManager.PerformActivityForFrame(m_performingActivity);
     }
 
     public void SetIndex(int cultistIndex)

@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     Color m_blackOutColor = new(0.0f, 0.0f, 0.0f, 1.0f);
 
+    const float MAX_HEALTH = 100.0f;
+
     void Awake()
     {
         m_introSequenceManager = GetComponent<IntroSequenceManager>();
@@ -27,7 +29,7 @@ public class GameManager : MonoBehaviour
         m_blackOutColor.a = ShowCamera ? 0.0f : 1.0f;
         BlackoutMesh.gameObject.SetActive(true);
         BlackoutMesh.material.color = m_blackOutColor;
-        m_gameData.BubbleHealth = 100.0f;
+        m_gameData.BubbleHealth = MAX_HEALTH;
         ShowCamera = true;
 
     }
@@ -43,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     void OnCommandmentCompleted(CommandmentData data)
     {
-        m_gameData.BubbleHealth += data.reward;
+        m_gameData.BubbleHealth = Mathf.Clamp(m_gameData.BubbleHealth + data.reward, 0.0f, MAX_HEALTH);
     }
 
     [SerializeField] CommandmentsView m_commandmentView;

@@ -17,6 +17,7 @@ public class Cultist : MonoBehaviour
     private CommandmentManager m_commandmentManager;
 
     private Activity m_currentActivity = Activity.None;
+    private Collider[] m_collisions = new Collider[8];
 
     public bool IsSelected
     {
@@ -93,20 +94,18 @@ public class Cultist : MonoBehaviour
         m_animator.SetFloat("exhaustion", exhaustionLevel);
         m_animator.SetInteger("activity", (int)PerformingActivity);
         movingSpeed = 0;
-    }
 
-    void Update()
-    {
         if (!IsSelected)
         {
             return;
         }
 
-        var colliders = Physics.OverlapBox(transform.position, new Vector3(0.1f, 0.1f, 0.1f));
         bool foundArea = false;
-        foreach (var collider in colliders)
-        {
-            if (collider.TryGetComponent<ActivityArea>(out ActivityArea area))
+        // var colliders = Physics.OverlapBox(transform.position, new Vector3(0.1f, 0.1f, 0.1f));
+        int collisions = Physics.OverlapBoxNonAlloc(transform.position, new Vector3(0.1f, 0.1f, 0.1f), m_collisions, Quaternion.identity, LayerMask.GetMask("RoomTrigger"));
+        for(int i = 0; i < collisions; i += 1) {
+        
+            if (m_collisions[i].TryGetComponent<ActivityArea>(out ActivityArea area))
             {
                 m_currentActivity = area.activity;
                 foundArea = true;

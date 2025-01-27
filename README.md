@@ -9,3 +9,4 @@ Created for GGJ2025​ @ Sussex Univeristy Campus
 
 Paul Hayes - Programmer
 Finn Connolly - Character Artist
+Chad Nippard - 3D Artist

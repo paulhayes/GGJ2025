@@ -12,6 +12,13 @@ public class Map : MonoBehaviour
 
     void Update()
     {
-         m_map.SetActive( m_mapButton.action.IsPressed() );
+        bool showMap = m_mapButton.action.IsPressed();
+        foreach( var gamepad in Gamepad.all){
+            if(gamepad.buttonNorth.isPressed){
+                showMap = true;
+                break;
+            }
+        }
+         m_map.SetActive( showMap );
     }
 }

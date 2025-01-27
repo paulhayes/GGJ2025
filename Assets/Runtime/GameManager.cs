@@ -56,14 +56,24 @@ public class GameManager : MonoBehaviour
 
         if (PlayIntroSequence && !m_introSequenceManager.IsComplete)
         {
+            bool skip=false;
+            if(Keyboard.current.spaceKey.wasPressedThisFrame){
+                skip=true;
+            }
             foreach (var gamepad in Gamepad.all)
             {
                 if (gamepad.buttonSouth.isPressed)
                 {
-                    PlayIntroSequence = false;
-                    m_introSequenceManager.EndIntro();
-                    return;
+                    skip=true;
+                    break;
                 }
+            }
+            
+            if(skip){
+                PlayIntroSequence = false;
+                m_introSequenceManager.EndIntro();
+                return;
+
             }
 
             ShowCamera = false;

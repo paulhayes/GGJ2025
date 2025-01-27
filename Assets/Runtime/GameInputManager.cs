@@ -67,23 +67,36 @@ public class GameInputManager : MonoBehaviour
 
         if (CurrentPlayerCount >= MAX_PLAYERS) return;
 
+        if(!_playerIndexDeviceMap.ContainsKey(Keyboard.current.deviceId) && Keyboard.current.spaceKey.wasPressedThisFrame){
+            AddPlayerOnDevice(Keyboard.current);
+        }
         foreach (var gamepad in Gamepad.all)
-        {
-
+        {            
             if (gamepad.buttonSouth.isPressed)
             {                
                 if (!_playerIndexDeviceMap.ContainsKey(gamepad.deviceId))
                 {
 
-                    int playerIndex = _freePlayerIndices.Dequeue();
-                    // TODO: Probably will need to handle a failure here
-                    _inputManager.JoinPlayer(playerIndex, -1, controlScheme: null, gamepad.device);
-                    _playerIndexDeviceMap.Add(gamepad.deviceId, playerIndex);
+                    // int playerIndex = _freePlayerIndices.Dequeue();
+                    // // TODO: Probably will need to handle a failure here
+                    // _inputManager.JoinPlayer(playerIndex, -1, controlScheme: null, gamepad.device);
+                    // _playerIndexDeviceMap.Add(gamepad.deviceId, playerIndex);
 
-                    CurrentPlayerCount += 1;
+                    // CurrentPlayerCount += 1;
+                    AddPlayerOnDevice(gamepad.device);
                 }
             }
         }
 
+    }
+
+    void AddPlayerOnDevice(InputDevice device)
+    {
+        int playerIndex = _freePlayerIndices.Dequeue();
+        // TODO: Probably will need to handle a failure here
+        _inputManager.JoinPlayer(playerIndex, -1, controlScheme: null, device);
+        _playerIndexDeviceMap.Add(device.deviceId, playerIndex);
+
+        CurrentPlayerCount += 1;
     }
 }

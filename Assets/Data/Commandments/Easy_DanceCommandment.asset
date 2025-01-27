@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Easy_DanceCommandment
   m_EditorClassIdentifier: 
   reward: 10
-  time: 5
+  time: 10
   activities: 08000000

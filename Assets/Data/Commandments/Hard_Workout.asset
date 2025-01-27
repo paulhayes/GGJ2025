@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faaeec90196055d4080b4b622e9c2b12, type: 3}
   m_Name: Hard_Workout
   m_EditorClassIdentifier: 
-  reward: 10
+  reward: 30
   time: 10
   activities: 080000000400000006000000

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faaeec90196055d4080b4b622e9c2b12, type: 3}
   m_Name: Medium_Refreshments
   m_EditorClassIdentifier: 
-  reward: 10
+  reward: 20
   time: 10
   activities: 0700000007000000

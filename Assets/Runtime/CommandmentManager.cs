@@ -13,6 +13,11 @@ public class CommandmentManager : MonoBehaviour
 
     [SerializeField]
     public CommandmentCollection CommandmentCollection;
+    public Commandment m_recruitCommandment;
+
+    public RecruitmentController m_recruitmentController;
+
+    [SerializeField] CultistManager m_cultistManager;
 
     private Dictionary<Activity, int> _performedActivityCounts = new();
 
@@ -47,9 +52,12 @@ public class CommandmentManager : MonoBehaviour
 
     public void UpdateActivities()
     {
-        if (_commandments.Count <= MAX_COMMANDMENTS && m_nextCommandmentTime<Time.time)
+        if (_commandments.Count < MAX_COMMANDMENTS && m_nextCommandmentTime<Time.time)
         {
             var commandment = new CommandmentData(CommandmentCollection.GetRandomCommandment());
+            if(m_cultistManager.NumCultists()<m_cultistManager.DefaultNumCultists){
+                commandment = new CommandmentData(m_recruitCommandment);
+            }
             _commandments.Add(commandment);
             OnNewCommandmentAdded?.Invoke(commandment);
         }
@@ -68,6 +76,12 @@ public class CommandmentManager : MonoBehaviour
                 {
                     CommandmentCollection.IncreaseDifficulty();
                     OnCommandmentCompleted?.Invoke(commandment);
+                    int recruitActivityIndex=0;
+                    while(recruitActivityIndex<commandment.activities.Length && (recruitActivityIndex=Array.LastIndexOf(commandment.activities,Activity.Recruiting,recruitActivityIndex))>=0){
+                        m_cultistManager.SpawnNew();
+                        recruitActivityIndex++;
+                        
+                    }
                     _commandments.RemoveAt(i);
                     Debug.Log("Task Complete!");
                     m_nextCommandmentTime = Time.time + m_commandmentInterval;
@@ -79,7 +93,6 @@ public class CommandmentManager : MonoBehaviour
 
     public void PerformActivityForFrame(Activity activity)
     {
-        //Debug.Log($"Performing {activity}");
         for(int i=0;i<_commandments.Count;i++){
             var commandment = _commandments[i];
             for(int j=0;j<commandment.activities.Length;j++){
@@ -91,23 +104,6 @@ public class CommandmentManager : MonoBehaviour
             }
         }
     }
-
-    // bool ActivityConditionsMet(CommandmentData commandment)
-    // {
-    //     foreach (var (activity, count) in commandment.activityCountMap)
-    //     {
-    //         if (!_performedActivityCounts.ContainsKey(activity))
-    //         {
-    //             commandment.activityInProgress[]            
-    //             return false;
-    //         }
-    //         if (_performedActivityCounts[activity] < count)
-    //         {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
-    // }
 
     public void Update()
     {

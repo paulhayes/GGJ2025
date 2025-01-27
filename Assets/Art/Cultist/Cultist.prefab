@@ -252,8 +252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_characterController: {fileID: 5365288873656010410}
   m_animator: {fileID: 1591925445832797854}
-  walkingSpeed: 4
-  exhaustedWalkingSpeed: 1.5
+  walkingSpeed: 5
+  exhaustedWalkingSpeed: 2
   m_playerIndicator: {fileID: 4528626624365912438}
   m_playerIndicators:
   - {fileID: 2100000, guid: d06127d4e6e73514c97c03069a87802a, type: 2}
@@ -270,7 +270,7 @@ MonoBehaviour:
   - {fileID: 597810973620532106}
   - {fileID: 3844999878959246276}
   - {fileID: 4387096115899912114}
-  exhaustionRate: 0.033333335
+  exhaustionRate: 0.008333335
   recoveryRate: 0.1
   m_wallMask: {fileID: 4807633233500566357}
   m_performingActivity: 0

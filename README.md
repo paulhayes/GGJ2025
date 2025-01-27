@@ -7,7 +7,7 @@ Created for GGJ2025​ @ Sussex Univeristy Campus
 
 ## Credits
 
-| Paul Hayes - Programmer
+| Paul Hayes - [Programmer](https://github.com/paulhayes)
 | Finn Connolly - Character Artist
 | Chad Nippard - 3D Artist
 |

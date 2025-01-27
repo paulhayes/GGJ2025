@@ -57,6 +57,11 @@ public class Cultist : MonoBehaviour
         DeselectCultist();
     }
 
+    void OnDestroy()
+    {
+        Destroy(m_characterController);        
+    }
+
     public void Move(Vector2 direction)
     {
         if (IsDead)
@@ -78,6 +83,7 @@ public class Cultist : MonoBehaviour
             return;
         }
 
+        transform.rotation = Quaternion.LookRotation( Vector3.ProjectOnPlane( -Camera.main.transform.forward, Vector3.up) );
         m_performingActivity = Activity.None;
         // var colliders = Physics.OverlapBox(transform.position, new Vector3(0.1f, 0.1f, 0.1f));
         int collisions = Physics.OverlapBoxNonAlloc(transform.position, new Vector3(0.1f, 0.1f, 0.1f), m_collisions, Quaternion.identity, LayerMask.GetMask("RoomTrigger"));
@@ -134,14 +140,7 @@ public class Cultist : MonoBehaviour
             return;
         }
 
-        if (m_performingActivity == Activity.Recruiting)
-        {
-            m_recruitmentController.Perform();
-        }
-        else
-        {
-            m_commandmentManager.PerformActivityForFrame(m_performingActivity);
-        }
+        m_commandmentManager.PerformActivityForFrame(m_performingActivity);
     }
 
     public void SetIndex(int cultistIndex)

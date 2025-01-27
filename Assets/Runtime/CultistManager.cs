@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -13,9 +14,16 @@ public class CultistManager : MonoBehaviour
 
     [SerializeField] int m_maximumCultists;
 
-    List<Cultist> cultists = new List<Cultist>();
+    List<Cultist> _cultists = new List<Cultist>();
 
     int cultistsSpawned=0;
+
+    public int DefaultNumCultists {  
+        get {
+            return m_startCultistsNum;
+        }
+    }
+
 
     void Start()
     {
@@ -24,25 +32,28 @@ public class CultistManager : MonoBehaviour
             int index = i % m_startPositions.Length;
             var cultist = Instantiate<Cultist>(m_cultistPrefab, m_startPositions[index].position, m_startPositions[index].rotation);
             cultist.SetIndex(cultistsSpawned++);
-            cultists.Add(cultist);
+            _cultists.Add(cultist);
         
         }
     }
 
     public void UpdateCultists()
     {
-        for (int i = 0; i < cultists.Count; i++)
+        for (int i = 0; i < _cultists.Count; i++)
         {
-            cultists[i].PerformActivity();
+            _cultists[i].PerformActivity();
         }
-        for(int i=cultists.Count-1;i>=0;i--){
-            if(cultists[i].IsDead)cultists.RemoveAt(i);
+        for(int i=_cultists.Count-1;i>=0;i--){
+            if(_cultists[i].IsDead){
+                Destroy(_cultists[i]);
+                _cultists.RemoveAt(i);
+            }
         }
     }
 
     public Cultist NextCultist(Cultist currentCultist)
     {
-        var index = currentCultist != null ? cultists.IndexOf(currentCultist) : 0;
+        var index = currentCultist != null ? _cultists.IndexOf(currentCultist) : 0;
         if (index == -1)
         {
             index = 0;
@@ -50,10 +61,10 @@ public class CultistManager : MonoBehaviour
 
         int count = 0;
 
-        while (count < cultists.Count)
+        while (count < _cultists.Count)
         {
-            index = (index + 1) % cultists.Count;
-            Cultist nextCultist = cultists[index];
+            index = (index + 1) % _cultists.Count;
+            Cultist nextCultist = _cultists[index];
 
             if (!nextCultist.IsSelected && !nextCultist.IsDead)
             {
@@ -68,7 +79,7 @@ public class CultistManager : MonoBehaviour
 
     public Cultist PreviousCultist(Cultist currentCultist)
     {
-        var index = currentCultist != null ? cultists.IndexOf(currentCultist) : 0;
+        var index = currentCultist != null ? _cultists.IndexOf(currentCultist) : 0;
         if (index == -1)
         {
             index = 0;
@@ -76,11 +87,11 @@ public class CultistManager : MonoBehaviour
 
         int count = 0;
 
-        while (count < cultists.Count)
+        while (count < _cultists.Count)
         {
-            index = ((index - 1) % cultists.Count + cultists.Count) % cultists.Count;
+            index = ((index - 1) % _cultists.Count + _cultists.Count) % _cultists.Count;
 
-            Cultist nextCultist = cultists[index];
+            Cultist nextCultist = _cultists[index];
 
             if (!nextCultist.IsSelected && !nextCultist.IsDead)
             {
@@ -95,15 +106,19 @@ public class CultistManager : MonoBehaviour
 
     public bool SpawnNew()
     {
-        if(cultists.Count>=m_maximumCultists){
+        if(_cultists.Count>=m_maximumCultists){
             return false;
         }
         var randomOffset = 2f*UnityEngine.Random.insideUnitCircle;
         var randomOffset3d = new Vector3(randomOffset.x,0,randomOffset.y);
         var cultist = Instantiate<Cultist>(m_cultistPrefab, m_newCultistSpawnPosition.position + (Vector3)(randomOffset3d), m_newCultistSpawnPosition.rotation);
         cultist.SetIndex(cultistsSpawned++);
-        cultists.Add(cultist);
+        _cultists.Add(cultist);
         return true;
     }
 
+    public int NumCultists()
+    {
+        return _cultists.Count;
+    }
 }

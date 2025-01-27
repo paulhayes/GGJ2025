@@ -10,6 +10,6 @@ Created for GGJ2025​ @ Sussex Univeristy Campus
 | Paul Hayes - [Programmer](https://github.com/paulhayes)
 | Finn Connolly - Character Artist
 | Chad Nippard - 3D Artist
-|
+| Josh Gabrel - Programmer
 |
 |

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af819e75a1651b46bbd2039f1bbb34e, type: 3}
+  m_Name: CultistDeathCollection
+  m_EditorClassIdentifier: 
+  m_audioClips:
+  - {fileID: 8300000, guid: 0457a12f9507ac0469569af29d51b231, type: 3}
+  - {fileID: 8300000, guid: cb0bf57f4f7de2446a1a1ee1f09346d7, type: 3}
+  - {fileID: 8300000, guid: fa0bb130724bf854a9078210f37375e9, type: 3}
+  - {fileID: 8300000, guid: 50ff70842d3a9da4cb407ac0cb6dbfc2, type: 3}
+  - {fileID: 8300000, guid: 79d7d4e0a97b05243af00c24c90f5e4f, type: 3}
+  m_spacial: 0
+  m_randomVolume: 0

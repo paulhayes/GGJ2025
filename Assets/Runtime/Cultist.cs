@@ -25,6 +25,10 @@ public class Cultist : MonoBehaviour
     private RecruitmentController m_recruitmentController;
     private Collider[] m_collisions = new Collider[128];
 
+    [SerializeField] AudioCollection m_bubbleSFX;
+    [SerializeField] AudioCollection m_deathSFX;
+    
+
     public bool IsSelected
     {
         get;
@@ -92,12 +96,17 @@ public class Cultist : MonoBehaviour
 
             if (m_collisions[i].TryGetComponent<ActivityArea>(out ActivityArea area))
             {
-                m_performingActivity = area.activity;
+                StartActivity(area.activity);
                 break;
             }
         }
+    }
 
+    public void StartActivity(Activity activity)
+    {
 
+        m_performingActivity = activity;
+        m_bubbleSFX.Play();
     }
 
     public void SelectCultist(int playerIndex)
@@ -127,6 +136,7 @@ public class Cultist : MonoBehaviour
         }
         if (exhaustionLevel == 1f)
         {
+            m_deathSFX.Play();
             m_performingActivity = Activity.Dead;
         }
 

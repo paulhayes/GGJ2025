@@ -273,6 +273,8 @@ MonoBehaviour:
   exhaustionRate: 0.008333335
   recoveryRate: 0.1
   m_wallMask: {fileID: 4807633233500566357}
+  m_bubbleSFX: {fileID: 11400000, guid: b8fe055279774144ca3ba9b637a4d7f6, type: 2}
+  m_deathSFX: {fileID: 11400000, guid: 6a8e1713be4fbef4bbc68d5be031c20f, type: 2}
   m_performingActivity: 0
   exhaustionLevel: 0
 --- !u!1 &8906440926668444079

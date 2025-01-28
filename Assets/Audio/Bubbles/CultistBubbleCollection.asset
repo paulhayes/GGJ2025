@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af819e75a1651b46bbd2039f1bbb34e, type: 3}
+  m_Name: CultistBubbleCollection
+  m_EditorClassIdentifier: 
+  m_audioClips:
+  - {fileID: 8300000, guid: 859fa9f643767ad47b34e0f8213a138d, type: 3}
+  - {fileID: 8300000, guid: 55725540ff982db45b1fead5ea4cfe7f, type: 3}
+  - {fileID: 8300000, guid: 33866cd7446f2064ba828a9207283d5e, type: 3}
+  - {fileID: 8300000, guid: bafb0f4f3c812964abdc698ab91e9623, type: 3}
+  - {fileID: 8300000, guid: 75069eda778f70a4288d88e6b725ff04, type: 3}
+  - {fileID: 8300000, guid: 8843445f7c1b5b94b852d893bf7b3ccf, type: 3}
+  - {fileID: 8300000, guid: 071a8227ded19a54eae19a986f95ac1b, type: 3}
+  - {fileID: 8300000, guid: 37b711537dc3434499f76b13b6848237, type: 3}
+  - {fileID: 8300000, guid: a81fdb84e054f64448cf2c9b42329268, type: 3}
+  - {fileID: 8300000, guid: d4948f7a019f2fe42b6daf59771e57f7, type: 3}
+  - {fileID: 8300000, guid: 365ace48ae4171945959aefa58367f83, type: 3}
+  - {fileID: 8300000, guid: cc6f9510559cf114d8725c9714f22ec9, type: 3}
+  - {fileID: 8300000, guid: 99ad8fcc1e7e8304f854c2e6d584c872, type: 3}
+  - {fileID: 8300000, guid: e75a50d6e528bb0429ee260c8271b8f2, type: 3}
+  - {fileID: 8300000, guid: 7848f6124471f8147990ac0ea495dc49, type: 3}
+  - {fileID: 8300000, guid: c988810079f61ea419f5f8cdc3994afa, type: 3}
+  - {fileID: 8300000, guid: 38894fdacff435c479eb899493772aea, type: 3}
+  - {fileID: 8300000, guid: 36bd0c29616068b44aa7cfae25bf145b, type: 3}
+  m_spacial: 0
+  m_randomVolume: 0

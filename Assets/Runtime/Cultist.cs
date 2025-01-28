@@ -11,9 +11,7 @@ public class Cultist : MonoBehaviour
     [SerializeField] float walkingSpeed = 2f;
     [SerializeField] float exhaustedWalkingSpeed = 1.5f;
 
-    [SerializeField] MeshRenderer m_playerIndicator;
-
-    [SerializeField] Material[] m_playerIndicators;
+    [SerializeField] PlayerIndicator m_playerIndicator;
 
     [SerializeField] GameObject[] m_masks;
 
@@ -112,15 +110,14 @@ public class Cultist : MonoBehaviour
     public void SelectCultist(int playerIndex)
     {
         IsSelected = true;
-        m_playerIndicator.material = m_playerIndicators[playerIndex];
-        m_playerIndicator.gameObject.SetActive(true);
+        m_playerIndicator.Select(playerIndex);
         m_wallMask.SetActive(true);
     }
 
     public void DeselectCultist()
     {
         IsSelected = false;
-        m_playerIndicator.gameObject.SetActive(false);
+        m_playerIndicator.Hide();
         m_wallMask.SetActive(false);
     }
 
@@ -147,6 +144,7 @@ public class Cultist : MonoBehaviour
 
         if (m_performingActivity == Activity.None)
         {
+            m_characterController.SimpleMove(Vector3.zero);
             return;
         }
 

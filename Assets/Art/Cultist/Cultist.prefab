@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 5452622636503231235}
   - component: {fileID: 5365288873656010410}
   - component: {fileID: 6946337438186427213}
+  - component: {fileID: 1331735676016401023}
   m_Layer: 0
   m_Name: Cultist
   m_TagString: Untagged
@@ -254,12 +255,7 @@ MonoBehaviour:
   m_animator: {fileID: 1591925445832797854}
   walkingSpeed: 5
   exhaustedWalkingSpeed: 2
-  m_playerIndicator: {fileID: 4528626624365912438}
-  m_playerIndicators:
-  - {fileID: 2100000, guid: d06127d4e6e73514c97c03069a87802a, type: 2}
-  - {fileID: 2100000, guid: a94aad94a891c6b43a61d702c915530d, type: 2}
-  - {fileID: 2100000, guid: 5569201e460766b4aa69fbf4a91cffc0, type: 2}
-  - {fileID: 2100000, guid: d56508d75aef87443b2c1e824245ab2f, type: 2}
+  m_playerIndicator: {fileID: 1331735676016401023}
   m_masks:
   - {fileID: 6908024384495339805}
   - {fileID: 1164465411564190698}
@@ -277,6 +273,57 @@ MonoBehaviour:
   m_deathSFX: {fileID: 11400000, guid: 6a8e1713be4fbef4bbc68d5be031c20f, type: 2}
   m_performingActivity: 0
   exhaustionLevel: 0
+--- !u!114 &1331735676016401023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427985490528783684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ed534dc9f5f6e48b77d8e83c1c4be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerIndicatorRenderer: {fileID: 4528626624365912438}
+  m_playerIndicators:
+  - {fileID: 2100000, guid: d06127d4e6e73514c97c03069a87802a, type: 2}
+  - {fileID: 2100000, guid: a94aad94a891c6b43a61d702c915530d, type: 2}
+  - {fileID: 2100000, guid: 5569201e460766b4aa69fbf4a91cffc0, type: 2}
+  - {fileID: 2100000, guid: d56508d75aef87443b2c1e824245ab2f, type: 2}
+  m_selectedAnimCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.654069
+      outSlope: 6.654069
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.027522936
+    - serializedVersion: 3
+      time: 0.2186937
+      value: 0.9828202
+      inSlope: 0.040357
+      outSlope: 0.040357
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8906440926668444079
 GameObject:
   m_ObjectHideFlags: 0

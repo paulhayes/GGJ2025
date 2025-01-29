@@ -22,6 +22,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Blue
+    second: {fileID: 2100000, guid: 6725a055ee5c21548ad33fa17d27606a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bubble
+    second: {fileID: 2100000, guid: 53b3cccecfb51ca43836dfaedb40fe7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: CabinetPaint
     second: {fileID: 2100000, guid: fea1e562e44e3c44ead30676d496d922, type: 2}
   - first:
@@ -97,8 +107,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Rug1
+    second: {fileID: 2100000, guid: 8bc2ed6a2c7f5f649a3e8fa2e01afbf8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rug2
+    second: {fileID: 2100000, guid: b758c66b96df32446a2725fde3595bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rug3
+    second: {fileID: 2100000, guid: 35f646fd4ab9de0449e86c185a408e23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: ShrineRoom Wallpaper
     second: {fileID: 2100000, guid: c57028113e8034f32aee839771d4b1d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TigerBody
+    second: {fileID: 2100000, guid: 6adc2af75e86cb74290802fc2a9e42be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TigerHead
+    second: {fileID: 2100000, guid: b6ce88ed289a6d444b6d3035b10545c1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
